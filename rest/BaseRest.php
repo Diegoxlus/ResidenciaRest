@@ -25,18 +25,18 @@ class BaseRest {
 	*
 	* @return Usuario the user just authenticated.
 	*/
-	public function authenticateUser() {
+	public function usuarioAutenticado() {
 
 		if (!isset($_SERVER['PHP_AUTH_USER'])) {
 			header($_SERVER['SERVER_PROTOCOL'].' 401 Unauthorized');
-			header('WWW-Authenticate: Basic realm="REST API SalmonDrive"');
+			header('WWW-Authenticate: Basic realm="REST API ResidenciaAPP"');
 			die('Necesitas loguearte');
 		}
 		else {
 			$userMapper = new UserMapper();
-			if ($userMapper->isValidUser($_SERVER['PHP_AUTH_USER'], $_SERVER['PHP_AUTH_PW'])) {
-                $userArray = $userMapper->getUserByName($_SERVER['PHP_AUTH_USER']);
-                return new Usuario($userArray['email'],$userArray['nombre'],$userArray['apellidos'],$userArray['dni'],$userArray['contraseña'],$userArray['rol']);
+			if ($userMapper->login($_SERVER['PHP_AUTH_USER'], $_SERVER['PHP_AUTH_PW'])) {
+                $userArray = $userMapper->getUsiarioByEmail($_SERVER['PHP_AUTH_USER']);
+                return new Usuario($userArray['email'],$userArray['nombre'],$userArray['apellidos'],$userArray['dni'],null,$userArray['contraseña'],$userArray['rol']);
 
             } else {
 				header($_SERVER['SERVER_PROTOCOL'].' 401 Unauthorized');
@@ -46,4 +46,14 @@ class BaseRest {
 			}
 		}
 	}
+
+	public function verificarRol($rol) : bool {
+	    $usuario = $this->usuarioAutenticado();
+	    if($usuario->getRol()!= $rol){
+            header($_SERVER['SERVER_PROTOCOL'].' 401 Unauthorized');
+            header('WWW-Authenticate: Basic realm="REST ResidenciaAPP"');
+            die('No tienes permisos para realizar esta acción');
+        }
+	    else return true;
+    }
 }

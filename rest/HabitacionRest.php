@@ -50,7 +50,7 @@ class HabitacionRest extends BaseRest
     }
 
     public function getHabitacion($numero){
-        $currentLogged = parent::authenticateUser();
+        $currentLogged = parent::usuarioAutenticado();
         $habitacion = $this->habitacionMapper->getHabitacionByNumero($numero);
         $habitacionJson = array();
             array_push($habitacionJson,array(
@@ -66,7 +66,7 @@ class HabitacionRest extends BaseRest
     }
 
     public function registrarHabitacion($data){
-        $currentLogged = parent::authenticateUser();
+        $currentLogged = parent::usuarioAutenticado();
         $habitacion = new Habitacion($data->numero,$data->tipo,$data->residente1,$data->residente2,$data->disponible);
         //$habitacion->comprobarDatos();
         try {

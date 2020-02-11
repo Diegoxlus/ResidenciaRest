@@ -34,7 +34,7 @@ class HabitacionMapper
         return new Habitacion($habitacion["numero"],$habitacion["tipo"],$habitacion["residente1"],$habitacion["residente2"],$habitacion["disponible"]);
     }
 
-    public function registrarHabitacion($habitacion){
+    public function registrarHabitacion(Habitacion $habitacion){
         $stmt = $this->db->prepare("INSERT INTO habitacion values (?,?,?,?,?)");
         $stmt->execute(array($habitacion->getNumero(), $habitacion->getTipo(), $habitacion->getResidente1(),$habitacion->getResidente2(),$habitacion->getDisponible()));
     }

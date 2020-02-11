@@ -21,13 +21,16 @@ class UsuarioRest extends BaseRest {
 		$this->userMapper = new UserMapper();
 	}
 
-	public function register($data) {
-		$user = new Usuario($data->email,$data->nombre,$data->apellidos,$data->dni,$data->contrasena,$data->rol);
+	public function register() {
+	    $data = $_POST['usuario'];
+	    $data = json_decode($data,true);
+		$user = new Usuario($data['_email'],$data['_nombre'],$data['_apellidos'],$data['_dni'],$data['_fNac'],$data['_pass'],$data['_rol']);
+
 		try {
 			$user->checkIsValid();
-			$this->userMapper->save($user);
+			$this->userMapper->registrarUsuario($user);
 			header($_SERVER['SERVER_PROTOCOL'].' 201 Created');
-			header("Location: ".$_SERVER['REQUEST_URI']."/".$data->nombre);
+			exit();
 		}catch(ValidationException $e) {
 			http_response_code(400);
 			header('Content-Type: application/json');
@@ -40,8 +43,30 @@ class UsuarioRest extends BaseRest {
 
 	}
 
+    public function registroManual() {
+        $data = $_POST['usuario'];
+        $data = json_decode($data,true);
+        $user = new Usuario($data['_email'],$data['_nombre'],$data['_apellidos'],null,null,$data['_pass'],$data['_rol']);
+
+        try {
+            $user->checkIsValid();
+            $this->userMapper->registrarUsuario($user);
+            header($_SERVER['SERVER_PROTOCOL'].' 201 Created');
+            exit();
+        }catch(ValidationException $e) {
+            http_response_code(400);
+            header('Content-Type: application/json');
+            echo(json_encode($e->getErrors()));
+        }catch(Exception $e) {
+            http_response_code(406);
+            header('Content-Type: application/json');
+            echo(json_encode($e->getMessage()));
+        }
+
+    }
+
 	public function login($email) {
-		$currentLogged = parent::authenticateUser();
+		$currentLogged = parent::usuarioAutenticado();
 		if ($currentLogged->getEmail() != $email) {
 			header($_SERVER['SERVER_PROTOCOL'].' 403 Forbidden');
 			echo("You are not authorized to login as anyone but you");
@@ -52,10 +77,111 @@ class UsuarioRest extends BaseRest {
 		}
 	}
 
+	public function getResidentes(){
+	    //parent::usuarioAutenticado();
+	    $userArray = $this->userMapper->getResidentes();
+        header($_SERVER['SERVER_PROTOCOL'].' 200 Ok');
+        header('Content-Type: application/json');
+        echo(json_encode($userArray));
+    }
+
+    public function getResidentesHabitacion(){
+        //parent::usuarioAutenticado();
+        $userArray = $this->userMapper->getResidentesHabitacion();
+        header($_SERVER['SERVER_PROTOCOL'].' 200 Ok');
+        header('Content-Type: application/json');
+        echo(json_encode($userArray));
+    }
+
+    public function getTrabajadores(){
+        //parent::usuarioAutenticado();
+        $userArray = $this->userMapper->getTrabajadores();
+        header($_SERVER['SERVER_PROTOCOL'].' 200 Ok');
+        header('Content-Type: application/json');
+        echo(json_encode($userArray));
+    }
+
+    public function eliminarTrabajador($email){
+	    $userArray = $this->userMapper->getUsiarioByEmail($email);
+        $usuario = new Usuario($userArray['email'],$userArray['nombre'],$userArray['apellidos'],$userArray['dni'],$userArray['f_nac'],$userArray['contraseña'],$userArray['rol']);
+        $rol = $usuario->getRol();
+
+        if($usuario->getRol()==3){
+            http_response_code(400);
+            header('Content-Type: application/text');
+            echo("Este usuario no es un trabajador");
+        }
+        else{
+            $resul = $this->userMapper->eliminarUsuario($usuario);
+            if($resul==1){
+                header($_SERVER['SERVER_PROTOCOL'].' 200 Ok');
+                echo(json_encode(true));
+            }
+            else if($resul==0){
+                header($_SERVER['SERVER_PROTOCOL'].' 500 Internal Server Error');
+                echo("Error al ejecutar la sentencia de eliminacion");
+
+            }
+            else{
+                header($_SERVER['SERVER_PROTOCOL'].' 406 Not Acceptable');
+                echo("Error desconocido al ejecutar la sentencia de eliminacion");
+            }
+        }
+
+    }
+
+    public function eliminarResidente($email){
+        $userArray = $this->userMapper->getUsiarioByEmail($email);
+        $usuario = new Usuario($userArray['email'],$userArray['nombre'],$userArray['apellidos'],$userArray['dni'],$userArray['f_nac'],$userArray['contraseña'],$userArray['rol']);
+        $rol = $usuario->getRol();
+
+        if($usuario->getRol()!=3){
+            http_response_code(400);
+            header('Content-Type: application/text');
+            echo("Este usuario no es un trabajador");
+        }
+        else{
+            $resul = $this->userMapper->eliminarUsuario($usuario);
+            if($resul==1){
+                header($_SERVER['SERVER_PROTOCOL'].' 200 Ok');
+                echo(json_encode(true));
+            }
+            else if($resul==0){
+                header($_SERVER['SERVER_PROTOCOL'].' 500 Internal Server Error');
+                echo("Error al ejecutar la sentencia de eliminacion");
+
+            }
+            else{
+                header($_SERVER['SERVER_PROTOCOL'].' 406 Not Acceptable');
+                echo("Error desconocido al ejecutar la sentencia de eliminacion");
+            }
+        }
+
+    }
+
+    public function modificarResidente($email){
+        $userArray = $this->userMapper->getUsiarioByEmail($email);
+        $usuario = new Usuario($userArray['email'],$userArray['nombre'],$userArray['apellidos'],$userArray['dni'],$userArray['f_nac'],$userArray['contraseña'],$userArray['rol']);
+
+
+    }
+
+    public function modificarTrabajador($email){
+        $userArray = $this->userMapper->getUsiarioByEmail($email);
+
+    }
+
 }
 
 // URI-MAPPING for this Rest endpoint
 $userRest = new UsuarioRest();
 URIDispatcher::getInstance()
-    ->map("GET","/user/$1", array($userRest,"login"))
-    ->map("POST","/user", array($userRest,"register"));
+    ->map("GET","/usuario/residente", array($userRest,"getResidentes"))
+    ->map("GET","/usuario/residente/habitacion", array($userRest,"getResidentesHabitacion"))
+    ->map("GET","/usuario/trabajador", array($userRest,"getTrabajadores"))
+    ->map("GET","/usuario/$1", array($userRest,"login"))
+    ->map("POST","/usuario", array($userRest,"register"))
+    ->map("POST","/usuario/manual", array($userRest,"registroManual"))
+    ->map("DELETE","/usuario/trabajador/$1", array($userRest,"eliminarTrabajador"))
+    ->map("DELETE","/usuario/residente/$1", array($userRest,"eliminarResidente"));
+

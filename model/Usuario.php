@@ -6,14 +6,16 @@ class Usuario implements JsonSerializable {
     private $nombre;
     private $apellidos;
     private $dni;
+    private $fNac;
     private $contrasena;
     private $rol;
 
-    public function __construct($email=NULL,$nombre=NULL, $apellidos=NULL,$dni=NULL,$contrasena=NULL,$rol=NULL) {
+    public function __construct($email=NULL,$nombre=NULL, $apellidos=NULL,$dni=NULL,$fNac=NULL,$contrasena=NULL,$rol=NULL) {
         $this->email = $email;
         $this->nombre = $nombre;
         $this->apellidos = $apellidos;
         $this->dni = $dni;
+        $this->fNac = $fNac;
         $this->contrasena = $contrasena;
         $this->rol = $rol;
     }
@@ -81,6 +83,24 @@ class Usuario implements JsonSerializable {
     {
         $this->dni = $dni;
     }
+
+    /**
+     * @return null
+     */
+    public function getFNac()
+    {
+        return $this->fNac;
+    }
+
+    /**
+     * @param null $fNac
+     */
+    public function setFNac($fNac)
+    {
+        $this->fNac = $fNac;
+    }
+
+
 
     /**
      * @return null
