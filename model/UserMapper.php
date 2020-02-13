@@ -48,8 +48,11 @@ return true;
 
     public function cambiarDatos(Usuario $usuario)
     {
-        $stmt = $this->db->prepare("UPDATE usuario set contraseña=?, where email=?");
-        $stmt->execute(array($usuario->getContrasena(), $usuario->getEmail()));
+        $stmt = $this->db->prepare("UPDATE usuario set nombre=?,apellidos=?,dni=?,f_nac=?,contraseña=?,rol=? where email=?");
+        if($stmt->execute(array($usuario->getNombre(),$usuario->getApellidos(),$usuario->getDni(),$usuario->getFNac(),$usuario->getContrasena(),$usuario->getRol(), $usuario->getEmail()))){
+            return true;
+        }
+        else return false;
     }
 
     public function eliminarUsuario(Usuario $usuario)

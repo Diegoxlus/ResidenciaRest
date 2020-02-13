@@ -160,9 +160,40 @@ class UsuarioRest extends BaseRest {
     }
 
     public function modificarResidente($email){
+        $data = $_POST['residente'];
+        $data = json_decode($data,true);
         $userArray = $this->userMapper->getUsiarioByEmail($email);
-        $usuario = new Usuario($userArray['email'],$userArray['nombre'],$userArray['apellidos'],$userArray['dni'],$userArray['f_nac'],$userArray['contraseña'],$userArray['rol']);
+        $usuarioExistente = new Usuario($userArray['email'],$userArray['nombre'],$userArray['apellidos'],$userArray['dni'],$userArray['f_nac'],$userArray['contraseña'],$userArray['rol']);
+        $usuarioNuevo = new Usuario($data['_email'],$data['_nombre'],$data['_apellidos'],$data['_dni'],$data['_f_nac'],$data['_pass'],$data['_rol']);
 
+        if($usuarioNuevo->getRol()!=3){
+            http_response_code(400);
+            header('Content-Type: application/json');
+            echo(json_encode("El usuario no es un residente"));
+            exit();
+        }
+        $this->modificarUsuario($usuarioExistente,$usuarioNuevo);
+
+        if($this->userMapper->cambiarDatos($usuarioExistente)){
+            header($_SERVER['SERVER_PROTOCOL'].' 200 Ok');
+            echo(json_encode(true));
+            exit();
+        }
+        else{
+            header($_SERVER['SERVER_PROTOCOL'].' 500 Internal Server Error');
+            echo("Error al ejecutar la sentencia de edicion");
+        }
+    }
+
+    public function  modificarUsuario(Usuario $usuarioExistente,Usuario $usuarioNuevo){
+	    $usuarioExistente->setNombre($usuarioNuevo->getNombre());
+	    $usuarioExistente->setApellidos($usuarioNuevo->getApellidos());
+	    $usuarioExistente->setDni($usuarioNuevo->getDni());
+	    if(!(strlen($usuarioNuevo->getContrasena())<=3) && !$usuarioNuevo->getContrasena()==''){
+            $usuarioExistente->setContrasena($usuarioNuevo->getContrasena());
+        }
+	    $usuarioExistente->setRol($usuarioNuevo->getRol());
+	    $usuarioExistente->setFNac($usuarioNuevo->getFNac());
 
     }
 
@@ -182,6 +213,7 @@ URIDispatcher::getInstance()
     ->map("GET","/usuario/$1", array($userRest,"login"))
     ->map("POST","/usuario", array($userRest,"register"))
     ->map("POST","/usuario/manual", array($userRest,"registroManual"))
+    ->map("POST","/usuario/residente/$1", array($userRest,"modificarResidente"))
     ->map("DELETE","/usuario/trabajador/$1", array($userRest,"eliminarTrabajador"))
     ->map("DELETE","/usuario/residente/$1", array($userRest,"eliminarResidente"));
 
