@@ -24,7 +24,7 @@ class UsuarioRest extends BaseRest {
 	public function register() {
 	    $data = $_POST['usuario'];
 	    $data = json_decode($data,true);
-		$user = new Usuario($data['_email'],$data['_nombre'],$data['_apellidos'],$data['_dni'],$data['_fNac'],$data['_pass'],$data['_rol']);
+		$user = new Usuario($data['_email'],$data['_nombre'],$data['_apellidos'],$data['_dni'],$data['_f_nac'],$data['_pass'],$data['_rol']);
 
 		try {
 			$user->checkIsValid();
