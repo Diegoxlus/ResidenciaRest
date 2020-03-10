@@ -108,6 +108,22 @@ class Habitacion
         $this->disponible = $disponible;
     }
 
+    public function verificar(){
+        $error = "";
+        if($this->numero<0 || $this->numero>32766 || strlen($this->numero)==0) {
+            $error = "El numero tiene que estar entre 0 y 32766";
+        }
+        if($this->tipo<0 || $this->tipo>1 || strlen($this->tipo)==0){
+            $error = "Selecion un tipo de habitacion";
+        }
+        if(strlen($this->disponible)==0){
+            $error = "Opcion disponible no valida";
+        }
+        if($error!=""){
+            throw new ValidationException($error, "Habitacion no valida");
+        }
+    }
+
 
 
 

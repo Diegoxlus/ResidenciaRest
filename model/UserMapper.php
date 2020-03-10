@@ -14,11 +14,7 @@ $this->db = PDOConnection::getInstance();
         $stmt->execute(array($usuario->getEmail(), $usuario->getNombre(), $usuario->getApellidos(), $usuario->getDni(), $usuario->getFNac(), $usuario->getContrasena(), $usuario->getRol()));
     }
 
-    public function registroManual(Usuario $usuario)
-    {
-        $stmt = $this->db->prepare("INSERT INTO usuario values (?,?,?,?,?,?,?)");
-        $stmt->execute(array($usuario->getEmail(), $usuario->getNombre(), $usuario->getApellidos(), null, null, $usuario->getContrasena(), $usuario->getRol()));
-    }
+
 
 
     public function emailExists($email) {

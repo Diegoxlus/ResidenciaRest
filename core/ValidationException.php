@@ -17,11 +17,11 @@ class ValidationException extends Exception {
 	* Array of errors
 	* @var mixed
 	*/
-	private $errors = array();
+	private $error;
 
-	public function __construct(array $errors, $msg=NULL){
+	public function __construct(String $error, $msg=NULL){
 		parent::__construct($msg);
-		$this->errors = $errors;
+		$this->error = $error;
 	}
 
 	/**
@@ -29,7 +29,7 @@ class ValidationException extends Exception {
 	*
 	* @return mixed The validation errors
 	*/
-	public function getErrors() {
-		return $this->errors;
+	public function getError() {
+		return $this->error;
 	}
 }

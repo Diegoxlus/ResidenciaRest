@@ -65,19 +65,36 @@ class HabitacionRest extends BaseRest
         echo (json_encode($habitacionJson));
     }
 
-    public function registrarHabitacion($data){
-        $currentLogged = parent::usuarioAutenticado();
-        $habitacion = new Habitacion($data->numero,$data->tipo,$data->residente1,$data->residente2,$data->disponible);
-        //$habitacion->comprobarDatos();
+
+
+    public function registrarHabitacion(){
+        $data = json_decode($_POST['habitacion'],true);
+        //$currentLogged = parent::usuarioAutenticado();
+        $habitacion = new Habitacion($data['_numero'],$data['_tipo'],$data['_residente1'],$data['_residente2'],$data['_disponible']);
+    if($this->habitacionMapper->existeHabitacion($habitacion->getNumero())==true){
+        http_response_code(400);
+        header('Content-Type: application/json');
+        echo(json_encode("La habitacion número " .$habitacion->getNumero() ." ya existe"));
+        exit();
+    }
         try {
+            $habitacion->verificar();
+            $this->habitacionMapper->eliminarResidentesHabitacion($habitacion);
             $this->habitacionMapper->registrarHabitacion($habitacion);
             header($_SERVER['SERVER_PROTOCOL'] . ' 201 Created');
-            header("Location: " . $_SERVER['REQUEST_URI'] . "/" . $data->numero);
+            echo(json_encode("Registro realizado"));
+
+        }catch (ValidationException $e){
+            http_response_code(400);
+            header('Content-Type: application/json');
+            echo(json_encode($e->getError()));
         }catch (Exception $e){
             http_response_code(400);
             header('Content-Type: application/json');
             echo(json_encode($e->getMessage()));
+
         }
+
     }
 
 

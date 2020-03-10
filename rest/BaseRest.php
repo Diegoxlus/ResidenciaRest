@@ -27,6 +27,7 @@ class BaseRest {
 	*/
 	public function usuarioAutenticado() {
 
+
 		if (!isset($_SERVER['PHP_AUTH_USER'])) {
 			header($_SERVER['SERVER_PROTOCOL'].' 401 Unauthorized');
 			header('WWW-Authenticate: Basic realm="REST API ResidenciaAPP"');
@@ -42,18 +43,22 @@ class BaseRest {
 				header($_SERVER['SERVER_PROTOCOL'].' 401 Unauthorized');
 				header('WWW-Authenticate: Basic realm="REST SalmonDrive"');
 
-				die('The username/password is not valid');
+				die('No tienes permiso');
 			}
 		}
 	}
 
-	public function verificarRol($rol) : bool {
+	public function verificarRol(array $roles) : bool {
 	    $usuario = $this->usuarioAutenticado();
-	    if($usuario->getRol()!= $rol){
+	    $coincide = false;
+	    foreach ($roles as $rol){
+            if ($usuario->getRol()== $rol) $coincide=true;
+        }
+	    if(!$coincide){
             header($_SERVER['SERVER_PROTOCOL'].' 401 Unauthorized');
             header('WWW-Authenticate: Basic realm="REST ResidenciaAPP"');
             die('No tienes permisos para realizar esta acción');
         }
-	    else return true;
+	    else return $coincide;
     }
 }

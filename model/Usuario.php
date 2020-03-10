@@ -136,23 +136,25 @@ class Usuario implements JsonSerializable {
 
 
 
-    public function checkIsValid(){
-        $errores = array();
+    public function verificar(){
+        $error = "";
         if(strlen($this->nombre)==0){
-            $errores["nombre"] = "El nombre no puede ser vacio";
+            $error = "El nombre no puede ser vacio";
         }
         if(strlen($this->apellidos)==0){
-            $errores["apellidos"] = "Los apellidos no pueden ser vacios";
+            $error = "Los apellidos no pueden ser vacios";
         }
         if(strlen($this->email)==0){
-            $errores["email"] = "El email no puede ser vacio";
+            $error = "El email no puede ser vacio";
+        }
+        if(strlen($this->dni)==0){
+            $error = "El dni no puede ser vacio";
         }
         if(strlen($this->contrasena)<7){
-            $errores["contrasena"] = "La contraseña no puede ser inferior a 7 caracteres";
+            $error = "La contraseña no puede ser inferior a 7 caracteres";
         }
-        print_r($errores);
-        if(sizeof($errores)>0){
-            throw new ValidationException($errores, "user is not valid");
+        if($error!=""){
+            throw new ValidationException($error, "Usuario no valido");
         }
     }
 
