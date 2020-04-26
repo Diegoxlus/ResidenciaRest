@@ -24,6 +24,13 @@ class MenuMapper
         return $menus;
     }
 
+    public function getMenuDia($dia) {
+        $stmt = $this->db->prepare("SELECT * FROM menu WHERE dia=?");
+        $stmt->execute(array($dia));
+        $resul = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $resul;
+    }
+
     public function añadirMenu(Menu $menu)
     {
         $dia = $menu->getDia();
@@ -31,9 +38,10 @@ class MenuMapper
         $stmt->execute(array($dia,$menu->getComida(),$menu->getCena(),false));
     }
 
+
     public function editarMenu(Menu $menu){
         $dia = $menu->getDia();
-        $stmt = $this->db->prepare("UPDATE menu set comida=?, cena=?, modificado=? where id=?");
+        $stmt = $this->db->prepare("UPDATE menu set comida=?, cena=?, modificado=? where dia=?");
         $stmt->execute(array($menu->getComida(),$menu->getCena(),true,$dia));
     }
 

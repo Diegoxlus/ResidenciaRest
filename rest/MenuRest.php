@@ -40,24 +40,45 @@ class MenuRest extends BaseRest {
         echo (json_encode($menusJsonArray));
     }
 
-    public function addMenu($data){
+    public function getMenuDia($dia){
+        $menu = $this->menuMapper->getMenuDia($dia);
+        header($_SERVER['SERVER_PROTOCOL'].' 200 Ok');
+        header('Content-Type: application/json');
+        echo (json_encode($menu));
 
-        $menu = new Menu($data->dia,$data->comida,$data->cena,false);
+    }
+
+    public function addMenu(){
+        $data = json_decode($_POST['menu'],true);
+        $menu = new Menu($data['_dia'],$data['_comida'],$data['_cena'],false);
+
         try{
+
+        if($this->menuMapper->getMenuDia($menu->getDia())!=false){
+            $this->menuMapper->editarMenu($menu);
+            header($_SERVER['SERVER_PROTOCOL'] . ' 201 Created');
+            echo(json_encode("Comida añadida correctamente"));
+            exit();
+
+        }
+        else {
             $this->menuMapper->añadirMenu($menu);
             header($_SERVER['SERVER_PROTOCOL'] . ' 201 Created');
-            header("Location: " . $_SERVER['REQUEST_URI'] . "/" . $data->dia);
+            echo(json_encode("Comida añadida correctamente"));
+        }
         }catch (Exception $e){
             http_response_code(400);
             header('Content-Type: application/json');
-            echo(json_encode($e->getMessage()));
+            echo(json_encode("Error al añadir la comida: ".$e->getMessage()));
         }
 
     }
+
 
 }
 $menuRest = new MenuRest();
 URIDispatcher::getInstance()
     ->map("GET","/menu", array($menuRest,"getMenus"))
+    ->map("GET","/menu/$1", array($menuRest,"getMenuDia"))
     ->map("POST","/menu", array($menuRest,"addMenu"));
 

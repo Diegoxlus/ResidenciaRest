@@ -82,6 +82,34 @@ class HabitacionMapper
         }
         }
     }
+
+    public function eliminarResidenteHabitacion($numeroHab, $residente)
+    {
+        $stmt1 = $this->db->prepare("UPDATE habitacion SET residente1 = null WHERE residente1 = ? AND numero= ?");
+        $stmt2 = $this->db->prepare("UPDATE habitacion SET residente2 = null WHERE residente2 = ? AND numero= ?");
+        $resul1= $stmt1->execute(array($residente,$numeroHab));
+        $resul2= $stmt2->execute(array($residente,$numeroHab));
+
+        return $resul1 && $resul2 == 1;
+
     }
+
+    public function editarHabitacion(Habitacion $habitacion)
+    {
+        $stmt = $this->db->prepare("UPDATE habitacion set residente1=?,residente2=?,disponible=? where numero=?");
+        $resul1= $stmt->execute(array($habitacion->getResidente1(),$habitacion->getResidente2(),$habitacion->getDisponible(),$habitacion->getNumero()));
+        return $resul1;
+
+    }
+
+    public function eliminarHabitacion($numeroHabitacion)
+    {
+        $stmt = $this->db->prepare("DELETE from habitacion WHERE numero = ?");
+        if ($stmt->execute(array($numeroHabitacion))) {
+            return 1;
+        } else return 0;
+
+    }
+}
 
 

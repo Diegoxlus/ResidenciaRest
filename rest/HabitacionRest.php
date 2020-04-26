@@ -97,6 +97,58 @@ class HabitacionRest extends BaseRest
 
     }
 
+    public function editarHabitacion($numero){
+        $data = json_decode($_POST['habitacion'],true);
+        //$currentLogged = parent::usuarioAutenticado();
+        $habitacion = new Habitacion($numero,$data['_tipo'],$data['_residente1'],$data['_residente2'],$data['_disponible']);
+        try {
+            $habitacion->verificar();
+            $this->habitacionMapper->editarHabitacion($habitacion);
+            header($_SERVER['SERVER_PROTOCOL'] . ' 201 Created');
+            echo(json_encode("Modificación realizada"));
+
+        }catch (ValidationException $e){
+            http_response_code(400);
+            header('Content-Type: application/json');
+            echo(json_encode($e->getError()));
+        }catch (Exception $e){
+            http_response_code(400);
+            header('Content-Type: application/json');
+            echo(json_encode($e->getMessage()));
+        }
+
+    }
+
+    public function eliminarResidenteHabitacion($numeroHab,$residente){
+        $resul = $this->habitacionMapper->eliminarResidenteHabitacion($numeroHab,$residente);
+        if($resul==1){
+            header($_SERVER['SERVER_PROTOCOL'].' 200 Ok');
+            header('Content-Type: application/json');
+            echo (json_encode("El residente fue eliminado de la habitacion"));
+        }
+        else{
+            http_response_code(400);
+            header('Content-Type: application/json');
+            echo(json_encode("Error al eliminar al residente"));
+        }
+
+    }
+
+    public function eliminarHabitacion($numeroHab){
+        $resul = $this->habitacionMapper->eliminarHabitacion($numeroHab);
+        if($resul==1){
+            header($_SERVER['SERVER_PROTOCOL'].' 200 Ok');
+            header('Content-Type: application/json');
+            echo (json_encode(true));
+        }
+        else{
+            http_response_code(400);
+            header('Content-Type: application/json');
+            echo(json_encode("Error al eliminar la habitacion"));
+        }
+
+    }
+
 
 }
 
@@ -105,4 +157,7 @@ $habitacionRest = new HabitacionRest();
 URIDispatcher::getInstance()
     ->map("GET","/habitacion", array($habitacionRest,"getHabitaciones"))
     ->map("GET","/habitacion/$1", array($habitacionRest,"getHabitacion"))
-    ->map("POST","/habitacion", array($habitacionRest,"registrarHabitacion"));
+    ->map("DELETE","/habitacion/$1", array($habitacionRest,"eliminarHabitacion"))
+    ->map("DELETE","/habitacion/$1/$2", array($habitacionRest,"eliminarResidenteHabitacion"))
+    ->map("POST","/habitacion/$1", array($habitacionRest,"editarHabitacion"));
+

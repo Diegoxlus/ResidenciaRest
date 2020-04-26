@@ -12,7 +12,15 @@ require_once(__DIR__."/../model/UserMapper.php");
 *
 * @author lipido <lipido@gmail.com>
 */
+
+
 class BaseRest {
+
+    const DIRECTORA = 0;
+    const SECRETARIA = 1;
+    const COCINERA = 2;
+    const RESIDENTE = 3;
+
 	public function __construct() { }
 
 	/**
@@ -48,7 +56,7 @@ class BaseRest {
 		}
 	}
 
-	public function verificarRol(array $roles) : bool {
+	public function verificarRol(array $roles) : Usuario {
 	    $usuario = $this->usuarioAutenticado();
 	    $coincide = false;
 	    foreach ($roles as $rol){
@@ -59,6 +67,6 @@ class BaseRest {
             header('WWW-Authenticate: Basic realm="REST ResidenciaAPP"');
             die('No tienes permisos para realizar esta acción');
         }
-	    else return $coincide;
+	    else return $usuario;
     }
 }
