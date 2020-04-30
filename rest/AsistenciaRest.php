@@ -74,18 +74,18 @@ class AsistenciaRest extends BaseRest {
 
         $configuracionData = $this->configuracionMapper->getConfiguracion();
         $configuracion = new Configuracion($configuracionData['id'],$configuracionData['hora_comida'],$configuracionData['hora_cena'],$configuracionData['limite_hora_comida'],$configuracionData['limite_hora_cena']);
-        $horaComer = $configuracion->getHoraComida(); // Hora de la comida
+        $horaComer = $configuracion->getHoraCena(); // Hora de la comida
         $horaPartida = explode(':',$horaComer); // Separamos las horas : min : sec
         $diaPartido = explode('-',$dia); // Separamos por año-mes-dia
         $horaComida->setTime($horaPartida[0],$horaPartida[1]); // Asignamos la hora de la comida
         $horaComida->setDate($diaPartido[0],$diaPartido[1],$diaPartido[2]); // Asignamos la fecha de la comida
 
-        $intervalo = 'PT'.$configuracion->getLimiteHoraComida().'H'; // Horas antes que se pueden anotar los residentes
+        $intervalo = 'PT'.$configuracion->getLimiteHoraCena().'H'; // Horas antes que se pueden anotar los residentes
         date_sub($horaComida,new DateInterval($intervalo)); // Modificamos la hora de la comida, esta ahora es la hora limite a la que se pueden anotar
 
         // Comparamos para ves si se puede anotar o no
         if($horaLocal<=$horaComida){
-            $result =  $this->asistenciaMapper->inscribirseComida($dia,$currentUser->getEmail());
+            $result =  $this->asistenciaMapper->inscribirseCena($dia,$currentUser->getEmail());
             if($result==1){
                 // Sentencia ejecutada con exito
                 header($_SERVER['SERVER_PROTOCOL'].' 200 Ok');

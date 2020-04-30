@@ -4,8 +4,6 @@
 class Parte implements JsonSerializable
 {
     private $id;
-    private $dia;
-    private $emisor; // Personal de la residencia que pone el parte(ej:Secretaria)
     private $residente;
     private $gravedad;
     private $motivo;
@@ -13,17 +11,13 @@ class Parte implements JsonSerializable
     /**
      * Parte constructor.
      * @param $id
-     * @param $dia
-     * @param $emisor
      * @param $residente
      * @param $gravedad
      * @param $motivo
      */
-    public function __construct($id = NULL, $dia = NULL, $emisor= NULL, $residente = NULL, $gravedad = NULL, $motivo = NULL)
+    public function __construct($id = NULL, $residente = NULL, $gravedad = NULL, $motivo = NULL)
     {
         $this->id = $id;
-        $this->dia = $dia;
-        $this->emisor = $emisor;
         $this->residente = $residente;
         $this->gravedad = $gravedad;
         $this->motivo = $motivo;
@@ -43,38 +37,6 @@ class Parte implements JsonSerializable
     public function setId($id)
     {
         $this->id = $id;
-    }
-
-    /**
-     * @return null
-     */
-    public function getDia()
-    {
-        return $this->dia;
-    }
-
-    /**
-     * @param null $dia
-     */
-    public function setDia($dia)
-    {
-        $this->dia = $dia;
-    }
-
-    /**
-     * @return null
-     */
-    public function getEmisor()
-    {
-        return $this->emisor;
-    }
-
-    /**
-     * @param null $emisor
-     */
-    public function setEmisor($emisor)
-    {
-        $this->emisor = $emisor;
     }
 
     /**

@@ -65,7 +65,7 @@ class UsuarioRest extends BaseRest {
             $user->verificar();
             $this->userMapper->registrarUsuario($user);
             header($_SERVER['SERVER_PROTOCOL'].' 201 Created');
-            echo(json_encode("Registro realizado"));
+            echo(json_encode(true));
             exit();
         }catch(ValidationException $e) {
             http_response_code(400);

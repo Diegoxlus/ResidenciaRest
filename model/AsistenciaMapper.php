@@ -27,7 +27,7 @@ class AsistenciaMapper
     }
 
     public function inscribirseCena($dia,$residente) {
-        $stmt = $this->db->prepare("INSERT INTO asistencia (residente, dia, cena) VALUES (?,?,?) ON DUPLICATE KEY UPDATE come = ?");
+        $stmt = $this->db->prepare("INSERT INTO asistencia (residente, dia, cena) VALUES (?,?,?) ON DUPLICATE KEY UPDATE cena = ?");
         $resul = $stmt->execute(array($residente,$dia,1,1));
         return $resul;
 
@@ -41,7 +41,7 @@ class AsistenciaMapper
     }
 
     public function desinscribirseCena($dia,$residente){
-        $stmt = $this->db->prepare("INSERT INTO asistencia (residente, dia, cena) VALUES (?,?,?) ON DUPLICATE KEY UPDATE come = ?");
+        $stmt = $this->db->prepare("INSERT INTO asistencia (residente, dia, cena) VALUES (?,?,?) ON DUPLICATE KEY UPDATE cena = ?");
         $resul = $stmt->execute(array($residente,$dia,0,0));
         return $resul;
 
