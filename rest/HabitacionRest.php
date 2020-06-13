@@ -31,7 +31,7 @@ class HabitacionRest extends BaseRest
     }
 
     public function getHabitaciones(){
-        //$currentLogged = parent::authenticateUser();
+        parent::verificarRol([0,1]);
         $habitaciones = $this->habitacionMapper->getHabitaciones();
         $habitacionesJsonArray = array();
 
@@ -50,7 +50,7 @@ class HabitacionRest extends BaseRest
     }
 
     public function getHabitacion($numero){
-        $currentLogged = parent::usuarioAutenticado();
+        parent::verificarRol([0,1]);
         $habitacion = $this->habitacionMapper->getHabitacionByNumero($numero);
         $habitacionJson = array();
             array_push($habitacionJson,array(
@@ -68,8 +68,8 @@ class HabitacionRest extends BaseRest
 
 
     public function registrarHabitacion(){
+        parent::verificarRol([0,1]);
         $data = json_decode($_POST['habitacion'],true);
-        //$currentLogged = parent::usuarioAutenticado();
         $habitacion = new Habitacion($data['_numero'],$data['_tipo'],$data['_residente1'],$data['_residente2'],$data['_disponible']);
     if($this->habitacionMapper->existeHabitacion($habitacion->getNumero())==true){
         http_response_code(400);
@@ -98,11 +98,12 @@ class HabitacionRest extends BaseRest
     }
 
     public function editarHabitacion($numero){
+        parent::verificarRol([0,1]);
         $data = json_decode($_POST['habitacion'],true);
-        //$currentLogged = parent::usuarioAutenticado();
         $habitacion = new Habitacion($numero,$data['_tipo'],$data['_residente1'],$data['_residente2'],$data['_disponible']);
         try {
             $habitacion->verificar();
+            $this->habitacionMapper->eliminarResidentesHabitacion($habitacion);
             $this->habitacionMapper->editarHabitacion($habitacion);
             header($_SERVER['SERVER_PROTOCOL'] . ' 201 Created');
             echo(json_encode("Modificación realizada"));
@@ -120,6 +121,7 @@ class HabitacionRest extends BaseRest
     }
 
     public function eliminarResidenteHabitacion($numeroHab,$residente){
+        parent::verificarRol([0,1]);
         $resul = $this->habitacionMapper->eliminarResidenteHabitacion($numeroHab,$residente);
         if($resul==1){
             header($_SERVER['SERVER_PROTOCOL'].' 200 Ok');
@@ -135,6 +137,7 @@ class HabitacionRest extends BaseRest
     }
 
     public function eliminarHabitacion($numeroHab){
+        parent::verificarRol([0,1]);
         $resul = $this->habitacionMapper->eliminarHabitacion($numeroHab);
         if($resul==1){
             header($_SERVER['SERVER_PROTOCOL'].' 200 Ok');
@@ -159,5 +162,6 @@ URIDispatcher::getInstance()
     ->map("GET","/habitacion/$1", array($habitacionRest,"getHabitacion"))
     ->map("DELETE","/habitacion/$1", array($habitacionRest,"eliminarHabitacion"))
     ->map("DELETE","/habitacion/$1/$2", array($habitacionRest,"eliminarResidenteHabitacion"))
+    ->map("POST","/habitacion", array($habitacionRest,"registrarHabitacion"))
     ->map("POST","/habitacion/$1", array($habitacionRest,"editarHabitacion"));
 

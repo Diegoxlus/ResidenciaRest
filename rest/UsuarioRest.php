@@ -3,6 +3,8 @@ require_once(__DIR__ . "/../model/Usuario.php");
 require_once(__DIR__."/../core/ValidationException.php");
 require_once(__DIR__."/../model/UserMapper.php");
 require_once(__DIR__ . "/BaseRest.php");
+require_once(__DIR__."/../model/ConfiguracionMapper.php");
+
 
 /**
 * Class UsuarioRest
@@ -14,14 +16,33 @@ require_once(__DIR__ . "/BaseRest.php");
 */
 class UsuarioRest extends BaseRest {
 	private $userMapper;
+	private $configuracionMapper;
 
 	public function __construct() {
 		parent::__construct();
 
 		$this->userMapper = new UserMapper();
+		$this->configuracionMapper = new ConfiguracionMapper();
+
 	}
 
 	public function register() {
+
+        $configuracionData = $this->configuracionMapper->getConfiguracion();
+        if(empty($configuracionData)){
+            http_response_code(400);
+            header('Content-Type: application/json');
+            echo(json_encode("Contacta con la directora, no están configurado el registro manual"));
+            exit();
+        }
+        $configuracion = new Configuracion($configuracionData['id'],$configuracionData['hora_comida'],$configuracionData['hora_cena'],$configuracionData['limite_hora_comida'],$configuracionData['limite_hora_cena'],$configuracionData['registro']);
+        if($configuracion->getRegistro()==0){
+            http_response_code(400);
+            header('Content-Type: application/json');
+            echo(json_encode("Contacta con la directora, no está activado el registro manual"));
+            exit();
+        }
+
 	    $data = $_POST['usuario'];
 	    $data = json_decode($data,true);
 		$user = new Usuario($data['_email'],$data['_nombre'],$data['_apellidos'],$data['_dni'],$data['_f_nac'],$data['_pass'],$data['_rol']);
@@ -50,6 +71,7 @@ class UsuarioRest extends BaseRest {
 	}
 
     public function registroManual() {
+        parent::verificarRol([0,1]);
         $data = $_POST['usuario'];
         $data = json_decode($data,true);
         $user = new Usuario($data['_email'],$data['_nombre'],$data['_apellidos'],$data['_dni'],$data['_f_nac'],$data['_pass'],$data['_rol']);
@@ -70,7 +92,7 @@ class UsuarioRest extends BaseRest {
         }catch(ValidationException $e) {
             http_response_code(400);
             header('Content-Type: application/json');
-            echo(json_encode($e->getErrors()));
+            echo(json_encode($e->getError()));
         }catch(Exception $e) {
             http_response_code(406);
             header('Content-Type: application/json');
@@ -83,7 +105,7 @@ class UsuarioRest extends BaseRest {
 		$currentLogged = parent::usuarioAutenticado();
 		if ($currentLogged->getEmail() != $email) {
 			header($_SERVER['SERVER_PROTOCOL'].' 403 Forbidden');
-			echo("You are not authorized to login as anyone but you");
+			echo("El email no corresponde.");
 		} else {
 			header($_SERVER['SERVER_PROTOCOL'].' 200 Ok');
             header('Content-Type: application/json');
@@ -108,7 +130,6 @@ class UsuarioRest extends BaseRest {
     }
 
     public function getTrabajadores(){
-        //parent::usuarioAutenticado();
         $userArray = $this->userMapper->getTrabajadores();
         header($_SERVER['SERVER_PROTOCOL'].' 200 Ok');
         header('Content-Type: application/json');
@@ -145,6 +166,7 @@ class UsuarioRest extends BaseRest {
     }
 
     public function eliminarResidente($email){
+	    parent::verificarRol([0,1]);
         $userArray = $this->userMapper->getUsiarioByEmail($email);
         $usuario = new Usuario($userArray['email'],$userArray['nombre'],$userArray['apellidos'],$userArray['dni'],$userArray['f_nac'],$userArray['contraseña'],$userArray['rol']);
         $rol = $usuario->getRol();
@@ -152,7 +174,7 @@ class UsuarioRest extends BaseRest {
         if($usuario->getRol()!=3){
             http_response_code(400);
             header('Content-Type: application/text');
-            echo("Este usuario no es un trabajador");
+            echo("Este usuario no es un residente");
         }
         else{
             $resul = $this->userMapper->eliminarUsuario($usuario);
@@ -174,6 +196,7 @@ class UsuarioRest extends BaseRest {
     }
 
     public function modificarResidente($email){
+	    parent::verificarRol([0,1]);
         $data = $_POST['residente'];
         $data = json_decode($data,true);
         $userArray = $this->userMapper->getUsiarioByEmail($email);
@@ -195,11 +218,12 @@ class UsuarioRest extends BaseRest {
         }
         else{
             header($_SERVER['SERVER_PROTOCOL'].' 500 Internal Server Error');
-            echo("Error al ejecutar la sentencia de edicion");
+            echo("Error interno del servidor");
         }
     }
 
     public function modificarTrabajador($email){
+	    parent::verificarRol([0,1]);
         $data = $_POST['trabajador'];
         $data = json_decode($data,true);
         $userArray = $this->userMapper->getUsiarioByEmail($email);

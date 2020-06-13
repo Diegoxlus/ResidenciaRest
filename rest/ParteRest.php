@@ -15,6 +15,7 @@ class ParteRest extends BaseRest {
     }
 
     function addParte(){
+        parent::verificarRol([0,1]);
         $data = json_decode($_POST['parte'],true);
         $parte = new Parte('',$data['_residente'],$data['_gravedad'],$data['_motivo']);
          $resul = $this->parteMapper->addParte($parte);
@@ -32,6 +33,8 @@ class ParteRest extends BaseRest {
     }
 
     function editarParte(){
+        parent::verificarRol([0,1]);
+
         $data = json_decode($_POST['parte'],true);
         $parte = new Parte($data['_id'],$data['_residente'],$data['_gravedad'],$data['_motivo']);
         $resul = $this->parteMapper->editarParte($parte);
@@ -49,8 +52,8 @@ class ParteRest extends BaseRest {
     }
 
     function getPartes(){
+        parent::verificarRol([0,1]);
 
-            //parent::verificarRol([0,1]);
             $partesArray = $this->parteMapper->getPartes();
             header($_SERVER['SERVER_PROTOCOL'].' 200 Ok');
             header('Content-Type: application/json');
@@ -59,7 +62,9 @@ class ParteRest extends BaseRest {
     }
 
     function eliminarParte($id){
-            $resul  = $parte = $this->parteMapper->eliminarParte($id);
+        parent::verificarRol([0,1]);
+
+        $resul  = $parte = $this->parteMapper->eliminarParte($id);
             if($resul == 1){
                 header($_SERVER['SERVER_PROTOCOL'].' 200 Ok');
                 header('Content-Type: application/json');

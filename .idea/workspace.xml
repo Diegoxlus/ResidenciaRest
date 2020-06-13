@@ -2,18 +2,30 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9d95892a-7838-4aaa-9a6a-d9aa2615246c" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/model/Permanencia.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/model/PermanenciaMapper.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rest/PermanenciaRest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/d7815595-e7a3-46fe-96a8-4cd9dfdc93a8.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/d7815595-e7a3-46fe-96a8-4cd9dfdc93a8.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model/AsistenciaMapper.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/AsistenciaMapper.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/Norma.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/NormaMapper.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/NoticiaMapper.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/NoticiaMapper.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/Parte.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/Parte.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/ParteMapper.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/ParteMapper.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/Configuracion.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/Configuracion.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/ConfiguracionMapper.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/ConfiguracionMapper.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/Habitacion.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/Habitacion.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/HabitacionMapper.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/HabitacionMapper.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/Pago.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/Pago.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/PagoMapper.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/PagoMapper.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/UserMapper.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/UserMapper.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rest/AsistenciaRest.php" beforeDir="false" afterPath="$PROJECT_DIR$/rest/AsistenciaRest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rest/NormaRest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/rest/BaseRest.php" beforeDir="false" afterPath="$PROJECT_DIR$/rest/BaseRest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rest/ConfiguracionRest.php" beforeDir="false" afterPath="$PROJECT_DIR$/rest/ConfiguracionRest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rest/HabitacionRest.php" beforeDir="false" afterPath="$PROJECT_DIR$/rest/HabitacionRest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rest/MenuRest.php" beforeDir="false" afterPath="$PROJECT_DIR$/rest/MenuRest.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rest/NoticiaRest.php" beforeDir="false" afterPath="$PROJECT_DIR$/rest/NoticiaRest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rest/PagoRest.php" beforeDir="false" afterPath="$PROJECT_DIR$/rest/PagoRest.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rest/ParteRest.php" beforeDir="false" afterPath="$PROJECT_DIR$/rest/ParteRest.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rest/UsuarioRest.php" beforeDir="false" afterPath="$PROJECT_DIR$/rest/UsuarioRest.php" afterDir="false" />
     </list>
+    <ignored path="$PROJECT_DIR$/.idea/httpRequests/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,7 +64,28 @@
         <item name="residencia@localhost" type="feb32156:DbDataSourceImpl" />
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
         <item name="residencia: schema" type="ebfa3cd1:MariaImplModel$Schema" />
-        <item name="noticia: table" type="dbc44a63:MariaImplModel$Table" />
+        <item name="asistencia: table" type="dbc44a63:MariaImplModel$Table" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="residencia@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="residencia: schema" type="ebfa3cd1:MariaImplModel$Schema" />
+        <item name="pago: table" type="dbc44a63:MariaImplModel$Table" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="residencia@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="residencia: schema" type="ebfa3cd1:MariaImplModel$Schema" />
+        <item name="permanencia: table" type="dbc44a63:MariaImplModel$Table" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="residencia@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="residencia: schema" type="ebfa3cd1:MariaImplModel$Schema" />
+        <item name="usuario: table" type="dbc44a63:MariaImplModel$Table" />
       </path>
     </expand>
     <select />
@@ -63,64 +96,91 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/model/NoticiaMapper.php">
+        <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/d7815595-e7a3-46fe-96a8-4cd9dfdc93a8/console.sql">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="702">
-              <caret line="39" column="105" selection-start-line="39" selection-start-column="105" selection-end-line="39" selection-end-column="105" />
+            <state>
+              <caret column="24" selection-start-column="24" selection-end-column="24" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/rest/ParteRest.php">
+        <entry file="file://$PROJECT_DIR$/rest/PermanenciaRest.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="80" column="27" selection-start-line="80" selection-start-column="27" selection-end-line="80" selection-end-column="27" />
+            <state relative-caret-position="1260">
+              <caret line="70" column="12" selection-start-line="70" selection-start-column="12" selection-end-line="70" selection-end-column="12" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/rest/NoticiaRest.php">
+        <entry file="file://$PROJECT_DIR$/rest/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="108">
-              <caret line="64" selection-start-line="64" selection-end-line="64" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/model/Usuario.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2469">
-              <caret line="9" column="15" selection-start-line="9" selection-start-column="15" selection-end-line="9" selection-end-column="15" />
+            <state relative-caret-position="198">
+              <caret line="11" column="44" selection-start-line="11" selection-start-column="44" selection-end-line="11" selection-end-column="44" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/rest/UsuarioRest.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="245">
-              <caret line="67" column="33" selection-start-line="67" selection-start-column="33" selection-end-line="67" selection-end-column="33" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/model/ParteMapper.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="666">
-              <caret line="37" column="8" selection-start-line="37" selection-start-column="8" selection-end-line="39" selection-end-column="22" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/model/MenuMapper.php">
+        <entry file="file://$PROJECT_DIR$/rest/HabitacionRest.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="216">
-              <caret line="26" column="20" selection-start-line="26" selection-start-column="20" selection-end-line="26" selection-end-column="20" />
+              <caret line="103" selection-start-line="103" selection-end-line="103" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/model/HabitacionMapper.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="330">
+              <caret line="80" column="26" selection-start-line="80" selection-start-column="26" selection-end-line="80" selection-end-column="26" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/model/Habitacion.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="190">
+              <caret line="105" column="26" selection-start-line="105" selection-start-column="26" selection-end-line="105" selection-end-column="26" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/rest/ConfiguracionRest.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="576">
+              <caret line="32" column="36" selection-start-line="32" selection-start-column="36" selection-end-line="32" selection-end-column="36" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/rest/BaseRest.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1116">
+              <caret line="62" column="15" selection-start-line="62" selection-start-column="15" selection-end-line="62" selection-end-column="15" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/rest/PagoRest.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="713">
+              <caret line="186" column="22" selection-start-line="186" selection-start-column="22" selection-end-line="186" selection-end-column="22" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/model/PagoMapper.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1152">
+              <caret line="64" column="24" selection-start-line="64" selection-start-column="24" selection-end-line="64" selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -132,6 +192,9 @@
       <find>residente</find>
       <find>verific</find>
       <find>Access-Control</find>
+      <find>print</find>
+      <find>prin</find>
+      <find>\n</find>
     </findStrings>
     <dirStrings>
       <dir>C:\xampp\htdocs</dir>
@@ -149,43 +212,47 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/model/Noticia.php" />
-        <option value="$PROJECT_DIR$/model/Pago.php" />
         <option value="$PROJECT_DIR$/model/Asistencia.php" />
         <option value="$PROJECT_DIR$/model/Menu.php" />
         <option value="$PROJECT_DIR$/model/NormaMapper.php" />
-        <option value="$PROJECT_DIR$/model/PagoMapper.php" />
         <option value="$PROJECT_DIR$/rest/NormaRest.php" />
-        <option value="$PROJECT_DIR$/rest/PagoRest.php" />
         <option value="$PROJECT_DIR$/core/ValidationException.php" />
         <option value="$PROJECT_DIR$/model/Usuario.php" />
-        <option value="$PROJECT_DIR$/model/Habitacion.php" />
-        <option value="$PROJECT_DIR$/model/UserMapper.php" />
         <option value="$PROJECT_DIR$/rest/URIDispatcher.php" />
         <option value="$PROJECT_DIR$/model/MenuMapper.php" />
-        <option value="$PROJECT_DIR$/rest/MenuRest.php" />
-        <option value="$PROJECT_DIR$/model/HabitacionMapper.php" />
-        <option value="$PROJECT_DIR$/rest/HabitacionRest.php" />
-        <option value="$PROJECT_DIR$/model/Configuracion.php" />
-        <option value="$PROJECT_DIR$/rest/BaseRest.php" />
-        <option value="$PROJECT_DIR$/model/ConfiguracionMapper.php" />
-        <option value="$PROJECT_DIR$/rest/ConfiguracionRest.php" />
-        <option value="$PROJECT_DIR$/rest/AsistenciaRest.php" />
-        <option value="$PROJECT_DIR$/model/AsistenciaMapper.php" />
         <option value="$PROJECT_DIR$/model/Parte.php" />
-        <option value="$PROJECT_DIR$/model/ParteMapper.php" />
-        <option value="$PROJECT_DIR$/rest/ParteRest.php" />
         <option value="$PROJECT_DIR$/model/Norma.php" />
         <option value="$PROJECT_DIR$/model/NoticiaMapper.php" />
-        <option value="$PROJECT_DIR$/rest/NoticiaRest.php" />
+        <option value="$PROJECT_DIR$/model/Pago.php" />
+        <option value="$PROJECT_DIR$/model/Configuracion.php" />
+        <option value="$PROJECT_DIR$/model/ConfiguracionMapper.php" />
+        <option value="$PROJECT_DIR$/rest/ParteRest.php" />
+        <option value="$PROJECT_DIR$/rest/ConfiguracionRest.php" />
+        <option value="$PROJECT_DIR$/rest/MenuRest.php" />
+        <option value="$PROJECT_DIR$/model/Permanencia.php" />
+        <option value="$PROJECT_DIR$/model/ParteMapper.php" />
+        <option value="$PROJECT_DIR$/model/PermanenciaMapper.php" />
+        <option value="$PROJECT_DIR$/model/UserMapper.php" />
         <option value="$PROJECT_DIR$/rest/UsuarioRest.php" />
+        <option value="$PROJECT_DIR$/rest/PermanenciaRest.php" />
+        <option value="$PROJECT_DIR$/model/PagoMapper.php" />
+        <option value="$PROJECT_DIR$/rest/PagoRest.php" />
+        <option value="$PROJECT_DIR$/model/AsistenciaMapper.php" />
+        <option value="$PROJECT_DIR$/rest/AsistenciaRest.php" />
+        <option value="$PROJECT_DIR$/rest/NoticiaRest.php" />
+        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/d7815595-e7a3-46fe-96a8-4cd9dfdc93a8/console.sql" />
+        <option value="$PROJECT_DIR$/rest/BaseRest.php" />
+        <option value="$PROJECT_DIR$/model/Habitacion.php" />
+        <option value="$PROJECT_DIR$/model/HabitacionMapper.php" />
+        <option value="$PROJECT_DIR$/rest/HabitacionRest.php" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-11" />
-    <option name="y" value="-11" />
-    <option name="width" value="1943" />
-    <option name="height" value="1043" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="1913" />
+    <option name="y" value="-163" />
+    <option name="width" value="763" />
+    <option name="height" value="1047" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -207,12 +274,11 @@
             <path>
               <item name="htdocs" type="b2602c69:ProjectViewProjectNode" />
               <item name="htdocs" type="462c0819:PsiDirectoryNode" />
-              <item name="model" type="462c0819:PsiDirectoryNode" />
+              <item name="rest" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="htdocs" type="b2602c69:ProjectViewProjectNode" />
-              <item name="htdocs" type="462c0819:PsiDirectoryNode" />
-              <item name="rest" type="462c0819:PsiDirectoryNode" />
+              <item name="Scratches and Consoles" type="1a2a3e82:ScratchProjectViewPane$MyProjectNode" />
             </path>
           </expand>
           <select />
@@ -226,7 +292,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="database.console.LAST_STATE" value="true" />
-    <property name="last_opened_file_path" value="$USER_HOME$/OneDrive/Desktop/components-master" />
+    <property name="last_opened_file_path" value="$USER_HOME$/OneDrive/Desktop/DocumentacionTFG" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -239,7 +305,93 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.gutterIcons" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+  </component>
+  <component name="RestClientSettings">
+    <option name="REQUEST_HISTORY">
+      <list>
+        <RestClientRequest>
+          <option name="httpMethod" value="GET" />
+          <option name="urlBase" value="http://localhost" />
+          <option name="urlPath" value="/rest/habitacion" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="GET" />
+          <option name="urlBase" value="http://localhost" />
+          <option name="urlPath" value="/rest/habitaciones" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="GET" />
+          <option name="urlBase" value="http://localhost" />
+          <option name="urlPath" value="/rest/usuario" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="GET" />
+          <option name="urlBase" value="http://localhost" />
+          <option name="urlPath" value="/rest/usuarios" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+      </list>
+    </option>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -286,7 +438,25 @@
       <workItem from="1587663595630" duration="10879000" />
       <workItem from="1587730323329" duration="25830000" />
       <workItem from="1587903117001" duration="88000" />
-      <workItem from="1588004896281" duration="19371000" />
+      <workItem from="1588004896281" duration="51088000" />
+      <workItem from="1588385530467" duration="3901000" />
+      <workItem from="1588431947431" duration="21000" />
+      <workItem from="1588643248874" duration="8236000" />
+      <workItem from="1588730251754" duration="589000" />
+      <workItem from="1588730871576" duration="22929000" />
+      <workItem from="1589997364727" duration="791000" />
+      <workItem from="1590061334978" duration="4297000" />
+      <workItem from="1590348487714" duration="19962000" />
+      <workItem from="1590491245499" duration="4000" />
+      <workItem from="1590509367312" duration="41000" />
+      <workItem from="1591557466393" duration="697000" />
+      <workItem from="1591638256577" duration="817000" />
+      <workItem from="1591715309563" duration="114000" />
+      <workItem from="1591743377069" duration="3316000" />
+      <workItem from="1591755668211" duration="2173000" />
+      <workItem from="1591998603516" duration="1271000" />
+      <workItem from="1592014631414" duration="14000" />
+      <workItem from="1592016672450" duration="1746000" />
     </task>
     <task id="LOCAL-00001" summary="Api Rest Residencia en PHP">
       <created>1579029114077</created>
@@ -337,16 +507,23 @@
       <option name="project" value="LOCAL" />
       <updated>1587899911336</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Falta la gestion de pagos">
+      <created>1588266065531</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1588266065531</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="152762000" />
+    <option name="totallyTimeSpent" value="255398000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1295" height="695" extended-state="7" />
+    <frame x="1913" y="-163" width="763" height="1047" extended-state="0" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22348177" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.31578946" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -365,7 +542,8 @@
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Terminal" order="10" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
-      <window_info anchor="bottom" id="Database Console" order="12" visible="true" weight="0.056527592" />
+      <window_info anchor="bottom" id="Database Console" order="12" visible="true" weight="0.54706925" />
+      <window_info anchor="bottom" id="REST Client" order="13" weight="0.55950266" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -375,7 +553,7 @@
       <window_info anchor="right" id="Mongo Explorer" order="6" />
       <window_info anchor="right" id="Capture Analysis" order="7" />
       <window_info anchor="right" id="Palette&#9;" order="8" />
-      <window_info anchor="right" id="Database" order="9" visible="true" weight="0.24453442" />
+      <window_info anchor="right" id="Database" order="9" visible="true" weight="0.123755336" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -389,19 +567,10 @@
     <MESSAGE value="Corregido error con la fecha de nacimiento, falta detectar si un dni ya esta registrado." />
     <MESSAGE value="Añadido la parte rest de habitaciones" />
     <MESSAGE value="Añadido la parte rest de configuracion y asistencia" />
-    <option name="LAST_COMMIT_MESSAGE" value="Añadido la parte rest de configuracion y asistencia" />
+    <MESSAGE value="Falta la gestion de pagos" />
+    <option name="LAST_COMMIT_MESSAGE" value="Falta la gestion de pagos" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/rest/.htaccess">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="11" column="36" selection-start-line="11" selection-start-column="36" selection-end-line="11" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/d7815595-e7a3-46fe-96a8-4cd9dfdc93a8/console.sql">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="das://d7815595-e7a3-46fe-96a8-4cd9dfdc93a8/schema/residencia/table/menu" />
     <entry file="uml://DATABASE/d7815595-e7a3-46fe-96a8-4cd9dfdc93a8.TABLE:residencia.menu">
       <provider selected="true" editor-type-id="UmlEditorProvider">
@@ -424,43 +593,11 @@
       </provider>
     </entry>
     <entry file="das://d7815595-e7a3-46fe-96a8-4cd9dfdc93a8/schema/residencia/table/habitacion" />
-    <entry file="uml://DATABASE/d7815595-e7a3-46fe-96a8-4cd9dfdc93a8.SCHEMA:residencia">
-      <provider selected="true" editor-type-id="UmlEditorProvider">
-        <state>
-          <ID>DATABASE</ID>
-          <OriginalElement>d7815595-e7a3-46fe-96a8-4cd9dfdc93a8.SCHEMA:residencia</OriginalElement>
-          <nodes>
-            <node x="" y="">d7815595-e7a3-46fe-96a8-4cd9dfdc93a8.TABLE:residencia.usuario</node>
-            <node x="" y="">d7815595-e7a3-46fe-96a8-4cd9dfdc93a8.TABLE:residencia.menu</node>
-            <node x="" y="">d7815595-e7a3-46fe-96a8-4cd9dfdc93a8.TABLE:residencia.habitacion</node>
-            <node x="" y="">d7815595-e7a3-46fe-96a8-4cd9dfdc93a8.TABLE:residencia.asistencia</node>
-          </nodes>
-          <notes />
-          <edges />
-          <settings layout="Hierarchic Group" zoom="1.0" x="263.0" y="186.0" />
-          <SelectedNodes />
-          <Categories>
-            <Category>Key columns</Category>
-            <Category>Columns</Category>
-          </Categories>
-          <SCOPE>All</SCOPE>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/model/NormaMapper.php" />
-    <entry file="file://$PROJECT_DIR$/model/Pago.php" />
-    <entry file="file://$PROJECT_DIR$/model/PagoMapper.php" />
     <entry file="file://$PROJECT_DIR$/core/ValidationException.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="414">
           <caret line="23" column="26" selection-start-line="23" selection-start-column="26" selection-end-line="23" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/PDOConnection.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="6" column="34" selection-start-line="6" selection-start-column="30" selection-end-line="6" selection-end-column="34" />
         </state>
       </provider>
     </entry>
@@ -471,95 +608,35 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/rest/URIDispatcher.php">
+    <entry file="das://d7815595-e7a3-46fe-96a8-4cd9dfdc93a8/schema/residencia/table/configuracion" />
+    <entry file="file://$PROJECT_DIR$/rest/NormaRest.php" />
+    <entry file="file://$PROJECT_DIR$/model/Norma.php" />
+    <entry file="file://$PROJECT_DIR$/model/Noticia.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1890">
-          <caret line="105" column="17" selection-start-line="105" selection-start-column="17" selection-end-line="105" selection-end-column="17" />
+        <state relative-caret-position="299">
+          <caret line="19" column="24" lean-forward="true" selection-start-line="19" selection-start-column="24" selection-end-line="19" selection-end-column="24" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/model/UserMapper.php">
+    <entry file="file://$PROJECT_DIR$/pagos/5eab5d3daf9d9.png" />
+    <entry file="file://$PROJECT_DIR$/model/Pago.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="55" column="8" lean-forward="true" selection-start-line="55" selection-start-column="8" selection-end-line="58" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/model/Habitacion.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="5" column="6" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/model/Asistencia.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2486">
-          <caret line="140" column="21" selection-start-line="140" selection-start-column="21" selection-end-line="140" selection-end-column="21" />
+        <state relative-caret-position="262">
+          <caret line="149" selection-start-line="149" selection-end-line="149" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/model/Configuracion.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="35" selection-start-line="35" selection-end-line="35" />
+        <state relative-caret-position="482">
+          <caret line="126" selection-start-line="126" selection-end-line="126" />
         </state>
       </provider>
     </entry>
-    <entry file="das://d7815595-e7a3-46fe-96a8-4cd9dfdc93a8/schema/residencia/table/configuracion" />
-    <entry file="file://$PROJECT_DIR$/rest/index.php">
+    <entry file="file://$PROJECT_DIR$/model/MenuMapper.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="11" column="44" selection-start-line="11" selection-start-column="44" selection-end-line="11" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/model/ConfiguracionMapper.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="21" column="42" selection-start-line="21" selection-end-line="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/rest/AsistenciaRest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="87" column="58" selection-start-line="87" selection-start-column="58" selection-end-line="87" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/model/AsistenciaMapper.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="594">
-          <caret line="43" column="125" selection-start-line="43" selection-start-column="125" selection-end-line="43" selection-end-column="125" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/rest/BaseRest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="16" column="6" selection-start-line="16" selection-start-column="6" selection-end-line="16" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/rest/ConfiguracionRest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="648">
-          <caret line="36" column="12" selection-start-line="36" selection-start-column="12" selection-end-line="38" selection-end-column="65" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/model/Parte.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1584">
-          <caret line="90" column="7" lean-forward="true" selection-start-line="90" selection-start-column="7" selection-end-line="90" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/rest/HabitacionRest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="39" column="56" selection-start-line="39" selection-start-column="56" selection-end-line="39" selection-end-column="56" />
+        <state relative-caret-position="558">
+          <caret line="31" column="5" selection-start-line="31" selection-start-column="5" selection-end-line="31" selection-end-column="5" />
         </state>
       </provider>
     </entry>
@@ -570,94 +647,295 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/rest/NormaRest.php">
+    <entry file="file://$PROJECT_DIR$/model/ConfiguracionMapper.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="9" column="38" lean-forward="true" selection-start-line="9" selection-start-column="38" selection-end-line="9" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/Asistencia.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="659">
+          <caret line="139" column="22" selection-start-line="139" selection-start-column="22" selection-end-line="139" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/restClient/lib/restClient.jar!/com/intellij/ws/rest/client/requests/collection/get-requests.http">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/httpRequests/2020-05-06T035245.401.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/httpRequests/2020-05-06T035039.400.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/httpRequests/http-requests-log.http">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="20" column="19" lean-forward="true" selection-start-line="20" selection-start-column="19" selection-end-line="20" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/rest-api_1.http">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="108">
-          <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
+          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/model/Norma.php">
+    <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/rest-api.http">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="3" column="6" selection-start-line="3" selection-start-column="6" selection-end-line="3" selection-end-column="6" />
+        <state relative-caret-position="108">
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/model/MenuMapper.php">
+    <entry file="file://$PROJECT_DIR$/rest/.htaccess">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="16" selection-start-column="16" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/Parte.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1620">
+          <caret line="90" column="7" lean-forward="true" selection-start-line="90" selection-start-column="7" selection-end-line="90" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rest/URIDispatcher.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="87" column="41" selection-start-line="87" selection-start-column="41" selection-end-line="87" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/Permanencia.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="216">
-          <caret line="26" column="20" selection-start-line="26" selection-start-column="20" selection-end-line="26" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/rest/PagoRest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="8" column="6" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/model/Noticia.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="19" column="24" lean-forward="true" selection-start-line="19" selection-start-column="24" selection-end-line="19" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/model/HabitacionMapper.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-632">
-          <caret line="44" column="27" selection-start-line="44" selection-start-column="27" selection-end-line="44" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/rest/MenuRest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="214">
-          <caret line="33" column="43" selection-start-line="33" selection-start-column="43" selection-end-line="33" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/model/ParteMapper.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="666">
-          <caret line="37" column="8" selection-start-line="37" selection-start-column="8" selection-end-line="39" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/model/NoticiaMapper.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="702">
-          <caret line="39" column="105" selection-start-line="39" selection-start-column="105" selection-end-line="39" selection-end-column="105" />
+          <caret line="41" column="20" selection-start-line="41" selection-start-column="20" selection-end-line="41" selection-end-column="20" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/model/Usuario.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2469">
-          <caret line="9" column="15" selection-start-line="9" selection-start-column="15" selection-end-line="9" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/rest/ParteRest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="80" column="27" selection-start-line="80" selection-start-column="27" selection-end-line="80" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/rest/NoticiaRest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="64" selection-start-line="64" selection-end-line="64" />
+        <state relative-caret-position="360">
+          <caret line="21" selection-start-line="21" selection-end-line="21" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/rest/UsuarioRest.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="245">
-          <caret line="67" column="33" selection-start-line="67" selection-start-column="33" selection-end-line="67" selection-end-column="33" />
+        <state relative-caret-position="195">
+          <caret line="176" column="49" selection-start-line="176" selection-start-column="49" selection-end-line="176" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/PermanenciaMapper.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-75">
+          <caret line="32" column="20" selection-start-line="32" selection-start-column="20" selection-end-line="32" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/ParteMapper.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="179">
+          <caret line="20" column="26" selection-start-line="20" selection-start-column="26" selection-end-line="20" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rest/ParteRest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="33">
+          <caret line="56" column="47" selection-start-line="56" selection-start-column="47" selection-end-line="56" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rest/AsistenciaRest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="479">
+          <caret line="306" column="24" selection-start-line="306" selection-start-column="24" selection-end-line="306" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/AsistenciaMapper.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="972">
+          <caret line="54" column="20" selection-start-line="54" selection-start-column="20" selection-end-line="54" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/UserMapper.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18">
+          <caret line="1" column="39" selection-start-line="1" selection-start-column="39" selection-end-line="1" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/PDOConnection.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="414">
+          <caret line="23" column="1" lean-forward="true" selection-start-line="23" selection-start-column="1" selection-end-line="23" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rest/MenuRest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1530">
+          <caret line="85" selection-start-line="85" selection-end-line="85" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://d7815595-e7a3-46fe-96a8-4cd9dfdc93a8/schema/residencia/table/noticia.sql" />
+    <entry file="file://$PROJECT_DIR$/model/NoticiaMapper.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="21" column="20" selection-start-line="21" selection-start-column="20" selection-end-line="21" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://DATABASE/d7815595-e7a3-46fe-96a8-4cd9dfdc93a8.SCHEMA:residencia">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>DATABASE</ID>
+          <OriginalElement>d7815595-e7a3-46fe-96a8-4cd9dfdc93a8.SCHEMA:residencia</OriginalElement>
+          <nodes>
+            <node x="32.5" y="254.0">d7815595-e7a3-46fe-96a8-4cd9dfdc93a8.TABLE:residencia.asistencia</node>
+            <node x="208.5" y="276.0">d7815595-e7a3-46fe-96a8-4cd9dfdc93a8.TABLE:residencia.parte</node>
+            <node x="213.0" y="471.0">d7815595-e7a3-46fe-96a8-4cd9dfdc93a8.TABLE:residencia.noticia</node>
+            <node x="0.0" y="33.0">d7815595-e7a3-46fe-96a8-4cd9dfdc93a8.TABLE:residencia.menu</node>
+            <node x="536.5" y="287.0">d7815595-e7a3-46fe-96a8-4cd9dfdc93a8.TABLE:residencia.permanencia</node>
+            <node x="700.5" y="265.0">d7815595-e7a3-46fe-96a8-4cd9dfdc93a8.TABLE:residencia.habitacion</node>
+            <node x="372.5" y="243.0">d7815595-e7a3-46fe-96a8-4cd9dfdc93a8.TABLE:residencia.pago</node>
+            <node x="449.5" y="0.0">d7815595-e7a3-46fe-96a8-4cd9dfdc93a8.TABLE:residencia.usuario</node>
+            <node x="0.0" y="471.0">d7815595-e7a3-46fe-96a8-4cd9dfdc93a8.TABLE:residencia.configuracion</node>
+          </nodes>
+          <notes />
+          <edges>
+            <edge source="d7815595-e7a3-46fe-96a8-4cd9dfdc93a8.TABLE:residencia.parte" target="d7815595-e7a3-46fe-96a8-4cd9dfdc93a8.TABLE:residencia.usuario">
+              <point x="0.0" y="-58.5" />
+              <point x="280.5" y="213.0" />
+              <point x="488.0" y="213.0" />
+              <point x="-38.5" y="91.5" />
+            </edge>
+            <edge source="d7815595-e7a3-46fe-96a8-4cd9dfdc93a8.TABLE:residencia.pago" target="d7815595-e7a3-46fe-96a8-4cd9dfdc93a8.TABLE:residencia.usuario">
+              <point x="0.0" y="-91.5" />
+              <point x="444.5" y="223.0" />
+              <point x="513.6666666666667" y="223.0" />
+              <point x="-12.833333333333314" y="91.5" />
+            </edge>
+            <edge source="d7815595-e7a3-46fe-96a8-4cd9dfdc93a8.TABLE:residencia.asistencia" target="d7815595-e7a3-46fe-96a8-4cd9dfdc93a8.TABLE:residencia.usuario">
+              <point x="39.0" y="-80.5" />
+              <point x="149.5" y="203.0" />
+              <point x="462.3333333333333" y="203.0" />
+              <point x="-64.16666666666669" y="91.5" />
+            </edge>
+            <edge source="d7815595-e7a3-46fe-96a8-4cd9dfdc93a8.TABLE:residencia.asistencia" target="d7815595-e7a3-46fe-96a8-4cd9dfdc93a8.TABLE:residencia.menu">
+              <point x="-39.0" y="-80.5" />
+              <point x="0.0" y="58.5" />
+            </edge>
+            <edge source="d7815595-e7a3-46fe-96a8-4cd9dfdc93a8.TABLE:residencia.permanencia" target="d7815595-e7a3-46fe-96a8-4cd9dfdc93a8.TABLE:residencia.usuario">
+              <point x="0.0" y="-47.5" />
+              <point x="608.5" y="223.0" />
+              <point x="539.3333333333333" y="223.0" />
+              <point x="12.833333333333314" y="91.5" />
+            </edge>
+            <edge source="d7815595-e7a3-46fe-96a8-4cd9dfdc93a8.TABLE:residencia.habitacion" target="d7815595-e7a3-46fe-96a8-4cd9dfdc93a8.TABLE:residencia.usuario">
+              <point x="-37.75" y="-69.5" />
+              <point x="738.25" y="213.0" />
+              <point x="565.0" y="213.0" />
+              <point x="38.5" y="91.5" />
+            </edge>
+          </edges>
+          <settings layout="Hierarchic Group" zoom="0.5504587155963303" x="426.0" y="316.0" />
+          <SelectedNodes>
+            <node>d7815595-e7a3-46fe-96a8-4cd9dfdc93a8.TABLE:residencia.usuario</node>
+          </SelectedNodes>
+          <Categories>
+            <Category>Key columns</Category>
+            <Category>Columns</Category>
+          </Categories>
+          <SCOPE>All</SCOPE>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rest/NoticiaRest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1026">
+          <caret line="57" column="35" selection-start-line="57" selection-start-column="35" selection-end-line="57" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/d7815595-e7a3-46fe-96a8-4cd9dfdc93a8/console.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="24" selection-start-column="24" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rest/PermanenciaRest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1260">
+          <caret line="70" column="12" selection-start-line="70" selection-start-column="12" selection-end-line="70" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rest/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="11" column="44" selection-start-line="11" selection-start-column="44" selection-end-line="11" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rest/ConfiguracionRest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="576">
+          <caret line="32" column="36" selection-start-line="32" selection-start-column="36" selection-end-line="32" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rest/BaseRest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1116">
+          <caret line="62" column="15" selection-start-line="62" selection-start-column="15" selection-end-line="62" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/PagoMapper.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1152">
+          <caret line="64" column="24" selection-start-line="64" selection-start-column="24" selection-end-line="64" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rest/PagoRest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="713">
+          <caret line="186" column="22" selection-start-line="186" selection-start-column="22" selection-end-line="186" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/Habitacion.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="105" column="26" selection-start-line="105" selection-start-column="26" selection-end-line="105" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/HabitacionMapper.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="80" column="26" selection-start-line="80" selection-start-column="26" selection-end-line="80" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rest/HabitacionRest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="103" selection-start-line="103" selection-end-line="103" />
         </state>
       </provider>
     </entry>

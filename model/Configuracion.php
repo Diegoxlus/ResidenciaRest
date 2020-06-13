@@ -8,6 +8,7 @@ class Configuracion
     private $hora_cena;
     private $limite_hora_comida;
     private $limite_hora_cena;
+    private $registro;
 
     /**
      * Configuracion constructor.
@@ -17,13 +18,14 @@ class Configuracion
      * @param $limite_hora_comida
      * @param $limite_hora_cena
      */
-    public function __construct($id = NULL, $hora_comida = NULL, $hora_cena = NULL, $limite_hora_comida = NULL, $limite_hora_cena = NULL)
+    public function __construct($id = NULL, $hora_comida = NULL, $hora_cena = NULL, $limite_hora_comida = NULL, $limite_hora_cena = NULL, $registro = NULL)
     {
         $this->id = $id;
         $this->hora_comida = $hora_comida;
         $this->hora_cena = $hora_cena;
         $this->limite_hora_comida = $limite_hora_comida;
         $this->limite_hora_cena = $limite_hora_cena;
+        $this->registro = $registro;
     }
 
     /**
@@ -105,6 +107,23 @@ class Configuracion
     {
         $this->limite_hora_cena = $limite_hora_cena;
     }
+
+    /**
+     * @return null
+     */
+    public function getRegistro()
+    {
+        return $this->registro;
+    }
+
+    /**
+     * @param null $registro
+     */
+    public function setRegistro($registro)
+    {
+        $this->registro = $registro;
+    }
+
 
 
 

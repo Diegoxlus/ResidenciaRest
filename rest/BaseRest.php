@@ -49,7 +49,7 @@ class BaseRest {
 
             } else {
 				header($_SERVER['SERVER_PROTOCOL'].' 401 Unauthorized');
-				header('WWW-Authenticate: Basic realm="REST SalmonDrive"');
+				header('WWW-Authenticate: Basic realm="REST ResidenciaRest"');
 
 				die('No tienes permiso');
 			}

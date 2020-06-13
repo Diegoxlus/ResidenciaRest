@@ -1330,46 +1330,51 @@
     <table id="337" parent="9" name="noticia"/>
     <table id="338" parent="9" name="pago"/>
     <table id="339" parent="9" name="parte"/>
-    <table id="340" parent="9" name="usuario"/>
-    <column id="341" parent="333" name="residente">
+    <table id="340" parent="9" name="permanencia"/>
+    <table id="341" parent="9" name="usuario"/>
+    <column id="342" parent="333" name="residente">
       <Position>1</Position>
       <DataType>varchar(45)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="342" parent="333" name="dia">
+    <column id="343" parent="333" name="dia">
       <Position>2</Position>
       <DataType>date|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="343" parent="333" name="come">
+    <column id="344" parent="333" name="come">
       <Position>3</Position>
       <DataType>tinyint(1)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="344" parent="333" name="cena">
+    <column id="345" parent="333" name="cena">
       <Position>4</Position>
       <DataType>tinyint(1)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="345" parent="333" name="asiste_comida">
+    <column id="346" parent="333" name="asiste_comida">
       <Position>5</Position>
       <DataType>tinyint(1)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="346" parent="333" name="asiste_cena">
+    <column id="347" parent="333" name="asiste_cena">
       <Position>6</Position>
       <DataType>tinyint(1)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="347" parent="333" name="PRIMARY">
+    <index id="348" parent="333" name="dia_menu_asistencia">
+      <ColNames>dia</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="349" parent="333" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>residente
 dia</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="348" parent="333" name="res_residentes_aistencia">
+    <foreign-key id="350" parent="333" name="res_residentes_aistencia">
       <ColNames>residente</ColNames>
       <RefSchemaName>residencia</RefSchemaName>
       <RefTableName>usuario</RefTableName>
@@ -1377,81 +1382,95 @@ dia</ColNames>
       <OnUpdate>cascade</OnUpdate>
       <OnDelete>cascade</OnDelete>
     </foreign-key>
-    <column id="349" parent="334" name="id">
+    <foreign-key id="351" parent="333" name="dia_menu_asistencia">
+      <ColNames>dia</ColNames>
+      <RefSchemaName>residencia</RefSchemaName>
+      <RefTableName>menu</RefTableName>
+      <RefColNames>dia</RefColNames>
+      <OnUpdate>cascade</OnUpdate>
+      <OnDelete>cascade</OnDelete>
+    </foreign-key>
+    <column id="352" parent="334" name="id">
       <Position>1</Position>
       <DataType>int(1)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="350" parent="334" name="hora_comida">
+    <column id="353" parent="334" name="hora_comida">
       <Position>2</Position>
       <DataType>time|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="351" parent="334" name="hora_cena">
+    <column id="354" parent="334" name="hora_cena">
       <Position>3</Position>
       <DataType>time|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="352" parent="334" name="limite_hora_comida">
+    <column id="355" parent="334" name="limite_hora_comida">
       <Position>4</Position>
       <DataType>int(2)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="353" parent="334" name="limite_hora_cena">
+    <column id="356" parent="334" name="limite_hora_cena">
       <Position>5</Position>
       <DataType>int(2)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="354" parent="334" name="PRIMARY">
+    <column id="357" parent="334" name="registro">
+      <Position>6</Position>
+      <DataType>tinyint(4)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <key id="358" parent="334" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="355" parent="335" name="numero">
+    <column id="359" parent="335" name="numero">
       <Position>1</Position>
       <DataType>smallint(6)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="356" parent="335" name="tipo">
+    <column id="360" parent="335" name="tipo">
       <Position>2</Position>
       <DataType>tinyint(4)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="357" parent="335" name="residente1">
+    <column id="361" parent="335" name="residente1">
       <Position>3</Position>
       <DataType>varchar(45)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="358" parent="335" name="residente2">
+    <column id="362" parent="335" name="residente2">
       <Position>4</Position>
       <DataType>varchar(45)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="359" parent="335" name="disponible">
+    <column id="363" parent="335" name="disponible">
       <Position>5</Position>
       <DataType>tinyint(1)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="360" parent="335" name="res_residente1_habitacion">
+    <index id="364" parent="335" name="res_residente1_habitacion">
       <ColNames>residente1</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="361" parent="335" name="res_residente2_habitacion">
+    <index id="365" parent="335" name="res_residente2_habitacion">
       <ColNames>residente2</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="362" parent="335" name="PRIMARY">
+    <key id="366" parent="335" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>numero</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="363" parent="335" name="res_residente1_habitacion">
+    <foreign-key id="367" parent="335" name="res_residente1_habitacion">
       <ColNames>residente1</ColNames>
       <RefSchemaName>residencia</RefSchemaName>
       <RefTableName>usuario</RefTableName>
@@ -1459,7 +1478,7 @@ dia</ColNames>
       <OnUpdate>cascade</OnUpdate>
       <OnDelete>set-null</OnDelete>
     </foreign-key>
-    <foreign-key id="364" parent="335" name="res_residente2_habitacion">
+    <foreign-key id="368" parent="335" name="res_residente2_habitacion">
       <ColNames>residente2</ColNames>
       <RefSchemaName>residencia</RefSchemaName>
       <RefTableName>usuario</RefTableName>
@@ -1467,143 +1486,115 @@ dia</ColNames>
       <OnUpdate>cascade</OnUpdate>
       <OnDelete>set-null</OnDelete>
     </foreign-key>
-    <column id="365" parent="336" name="dia">
+    <column id="369" parent="336" name="dia">
       <Position>1</Position>
       <DataType>date|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="366" parent="336" name="comida">
+    <column id="370" parent="336" name="comida">
       <Position>2</Position>
       <DataType>varchar(300)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="367" parent="336" name="cena">
+    <column id="371" parent="336" name="cena">
       <Position>3</Position>
       <DataType>varchar(300)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="368" parent="336" name="modificado">
+    <column id="372" parent="336" name="modificado">
       <Position>4</Position>
       <DataType>tinyint(1)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="369" parent="336" name="PRIMARY">
+    <key id="373" parent="336" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>dia</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="370" parent="337" name="id">
+    <column id="374" parent="337" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="371" parent="337" name="dia">
+    <column id="375" parent="337" name="dia">
       <Position>2</Position>
       <DataType>date|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="372" parent="337" name="titulo">
+    <column id="376" parent="337" name="titulo">
       <Position>3</Position>
       <DataType>varchar(60)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="373" parent="337" name="descripcion">
+    <column id="377" parent="337" name="descripcion">
       <Position>4</Position>
       <DataType>text|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="374" parent="337" name="PRIMARY">
+    <key id="378" parent="337" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="375" parent="338" name="id">
+    <column id="379" parent="338" name="id">
       <Position>1</Position>
       <DataType>varchar(45)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="376" parent="338" name="residente">
+    <column id="380" parent="338" name="residente">
       <Position>2</Position>
       <DataType>varchar(45)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="377" parent="338" name="nombre">
+    <column id="381" parent="338" name="dia">
       <Position>3</Position>
-      <DataType>varchar(45)|0s</DataType>
+      <DataType>date|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="378" parent="338" name="ruta">
+    <column id="382" parent="338" name="extension">
       <Position>4</Position>
-      <DataType>varchar(40)|0s</DataType>
+      <DataType>varchar(5)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="379" parent="338" name="mes">
+    <column id="383" parent="338" name="tipo">
       <Position>5</Position>
-      <DataType>int(2)|0s</DataType>
+      <DataType>varchar(20)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="380" parent="338" name="residente_pago">
+    <column id="384" parent="338" name="mes">
+      <Position>6</Position>
+      <DataType>varchar(15)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="385" parent="338" name="correcto">
+      <Position>7</Position>
+      <DataType>tinyint(4)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <index id="386" parent="338" name="residente_pago">
       <ColNames>residente</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="381" parent="338" name="PRIMARY">
+    <key id="387" parent="338" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="382" parent="338" name="residente_pago">
-      <ColNames>residente</ColNames>
-      <RefSchemaName>residencia</RefSchemaName>
-      <RefTableName>usuario</RefTableName>
-      <RefColNames>email</RefColNames>
-    </foreign-key>
-    <column id="383" parent="339" name="id">
-      <Position>1</Position>
-      <DataType>int(11)|0s</DataType>
-      <NotNull>1</NotNull>
-      <SequenceIdentity>1</SequenceIdentity>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="384" parent="339" name="residente">
-      <Position>2</Position>
-      <DataType>varchar(45)|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="385" parent="339" name="gravedad">
-      <Position>3</Position>
-      <DataType>int(11)|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="386" parent="339" name="motivo">
-      <Position>4</Position>
-      <DataType>text|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <index id="387" parent="339" name="parte_usuario">
-      <ColNames>residente</ColNames>
-      <Type>btree</Type>
-    </index>
-    <key id="388" parent="339" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <ColNames>id</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <foreign-key id="389" parent="339" name="parte_usuario">
+    <foreign-key id="388" parent="338" name="residente_pago">
       <ColNames>residente</ColNames>
       <RefSchemaName>residencia</RefSchemaName>
       <RefTableName>usuario</RefTableName>
@@ -1611,47 +1602,124 @@ dia</ColNames>
       <OnUpdate>cascade</OnUpdate>
       <OnDelete>cascade</OnDelete>
     </foreign-key>
-    <column id="390" parent="340" name="email">
+    <column id="389" parent="339" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="390" parent="339" name="residente">
+      <Position>2</Position>
+      <DataType>varchar(45)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="391" parent="339" name="gravedad">
+      <Position>3</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="392" parent="339" name="motivo">
+      <Position>4</Position>
+      <DataType>text|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <index id="393" parent="339" name="parte_usuario">
+      <ColNames>residente</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="394" parent="339" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="395" parent="339" name="parte_usuario">
+      <ColNames>residente</ColNames>
+      <RefSchemaName>residencia</RefSchemaName>
+      <RefTableName>usuario</RefTableName>
+      <RefColNames>email</RefColNames>
+      <OnUpdate>cascade</OnUpdate>
+      <OnDelete>cascade</OnDelete>
+    </foreign-key>
+    <column id="396" parent="340" name="id">
       <Position>1</Position>
       <DataType>varchar(45)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="391" parent="340" name="nombre">
+    <column id="397" parent="340" name="residente">
+      <Position>2</Position>
+      <DataType>varchar(45)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="398" parent="340" name="dia">
+      <Position>3</Position>
+      <DataType>date|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <index id="399" parent="340" name="residente_permanencia">
+      <ColNames>residente</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="400" parent="340" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="401" parent="340" name="residente_permanencia">
+      <ColNames>residente</ColNames>
+      <RefSchemaName>residencia</RefSchemaName>
+      <RefTableName>usuario</RefTableName>
+      <RefColNames>email</RefColNames>
+      <OnUpdate>cascade</OnUpdate>
+      <OnDelete>cascade</OnDelete>
+    </foreign-key>
+    <column id="402" parent="341" name="email">
+      <Position>1</Position>
+      <DataType>varchar(45)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="403" parent="341" name="nombre">
       <Position>2</Position>
       <DataType>varchar(25)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="392" parent="340" name="apellidos">
+    <column id="404" parent="341" name="apellidos">
       <Position>3</Position>
       <DataType>varchar(45)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="393" parent="340" name="dni">
+    <column id="405" parent="341" name="dni">
       <Position>4</Position>
       <DataType>varchar(9)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="394" parent="340" name="f_nac">
+    <column id="406" parent="341" name="f_nac">
       <Position>5</Position>
       <DataType>date|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="395" parent="340" name="contraseña">
+    <column id="407" parent="341" name="contraseña">
       <Position>6</Position>
       <DataType>varchar(25)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="396" parent="340" name="rol">
+    <column id="408" parent="341" name="rol">
       <Position>7</Position>
       <DataType>tinyint(4)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="397" parent="340" name="PRIMARY">
+    <key id="409" parent="341" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>email</ColNames>
       <Primary>1</Primary>

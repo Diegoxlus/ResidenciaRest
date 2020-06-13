@@ -79,7 +79,7 @@ return true;
 
     public function getResidentesHabitacion()
     {
-        $stmt = $this->db->prepare("SELECT usuario.email,usuario.nombre,usuario.apellidos,usuario.dni,usuario.f_nac,usuario.rol,habitacion.numero FROM usuario LEFT JOIN habitacion ON usuario.email=habitacion.residente1 WHERE usuario.rol=3");
+        $stmt = $this->db->prepare("SELECT usuario.email,usuario.nombre,usuario.apellidos,usuario.dni,usuario.f_nac,usuario.rol,habitacion.numero FROM usuario LEFT JOIN habitacion ON usuario.email=habitacion.residente1 OR usuario.email=habitacion.residente2 WHERE usuario.rol=3");
         $stmt->execute();
         $resul = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $resul;

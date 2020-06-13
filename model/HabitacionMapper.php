@@ -43,6 +43,10 @@ class HabitacionMapper
     }
 
     public function registrarHabitacion(Habitacion $habitacion){
+        if($habitacion->getResidente1()==$habitacion->getResidente2()){
+            $habitacion->setResidente2(NULL);
+        }
+
         $stmt = $this->db->prepare("INSERT INTO habitacion values (?,?,?,?,?)");
         $stmt->execute(array($habitacion->getNumero(), $habitacion->getTipo(), $habitacion->getResidente1(),$habitacion->getResidente2(),$habitacion->getDisponible()));
     }
@@ -50,37 +54,17 @@ class HabitacionMapper
     {
         $email1 = $habitacion->getResidente1();
         $email2 = $habitacion->getResidente2();
+        if ($email1 != null || $email2!=null) {
+            $stmt = $this->db->prepare("SELECT numero FROM habitacion WHERE residente1=? OR residente2=?");
 
-
-        if ($email1 != null) {
-            $numero=null;
-            $stmt = $this->db->prepare("SELECT COALESCE (numero,null) FROM habitacion WHERE residente1=? OR residente2=?");
-
-            if($stmt->execute(array($email1, $email1))!=1) {
+            if($stmt->execute(array($email1, $email2))==1) {
                 $numero = $stmt->fetch(PDO::FETCH_ASSOC)['numero'];
+                $stmt = $this->db->prepare("UPDATE habitacion SET residente1=NULL,residente2=NULL WHERE numero= ?");
+                $stmt->execute(array($numero));
 
-                $stmt = $this->db->prepare("UPDATE habitacion SET residente1=NULL WHERE numero= ? AND residente1=?");
-                $stmt->execute(array($numero, $email1));
-
-                $stmt = $this->db->prepare("UPDATE habitacion SET residente2= NULL WHERE  numero=? AND residente2=?");
-                $stmt->execute(array($numero, $email1));
             }
         }
 
-        if($email2!=null) {
-            $stmt = $this->db->prepare("SELECT COALESCE (numero,null) FROM habitacion WHERE residente1=? OR residente2=?");
-        if ($stmt->execute(array($email2, $email2)) != 1) {
-            $numero = $stmt->fetch(PDO::FETCH_ASSOC)['numero'];
-
-
-            $stmt = $this->db->prepare("UPDATE habitacion SET residente1=? WHERE residente1=? AND numero=?");
-            $stmt->execute(array($email2, $email2, $numero));
-
-            $stmt = $this->db->prepare("UPDATE habitacion SET residente2=? WHERE residente2=? AND numero=?");
-            $stmt->execute(array($email2, $email2, $numero));
-
-        }
-        }
     }
 
     public function eliminarResidenteHabitacion($numeroHab, $residente)
@@ -96,8 +80,12 @@ class HabitacionMapper
 
     public function editarHabitacion(Habitacion $habitacion)
     {
-        $stmt = $this->db->prepare("UPDATE habitacion set residente1=?,residente2=?,disponible=? where numero=?");
-        $resul1= $stmt->execute(array($habitacion->getResidente1(),$habitacion->getResidente2(),$habitacion->getDisponible(),$habitacion->getNumero()));
+
+        if(!$habitacion->getDisponible()){
+            $habitacion->setDisponible(0);
+        }
+        $stmt = $this->db->prepare("UPDATE habitacion set tipo=?, residente1=?,residente2=?,disponible=? where numero=?");
+        $resul1= $stmt->execute(array($habitacion->getTipo(),$habitacion->getResidente1(),$habitacion->getResidente2(),$habitacion->getDisponible(),$habitacion->getNumero()));
         return $resul1;
 
     }

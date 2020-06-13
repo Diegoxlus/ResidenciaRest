@@ -4,12 +4,12 @@
 class Pago implements JsonSerializable
 {
     private $id;
-    private $fecha;
+    private $dia;
     private $residente;
-    private $comprobante;
-    private $rutaComprobante;
+    private $correcto;
+    private $mes;
+    private $extension;
     private $tipo;
-    private $realizado;
 
     /**
      * Pago constructor.
@@ -21,15 +21,15 @@ class Pago implements JsonSerializable
      * @param $tipo
      * @param $realizado
      */
-    public function __construct($id = NULL, $fecha = NULL, $residente= NULL, $comprobante= NULL, $rutaComprobante= NULL, $tipo= NULL, $realizado= NULL)
+    public function __construct($id = NULL, $dia = NULL, $residente= NULL, $extension= NULL,$tipo=NULL, $mes= NULL, $correcto= NULL)
     {
         $this->id = $id;
-        $this->fecha = $fecha;
+        $this->dia = $dia;
         $this->residente = $residente;
-        $this->comprobante = $comprobante;
-        $this->rutaComprobante = $rutaComprobante;
+        $this->correcto = $correcto;
+        $this->mes = $mes;
         $this->tipo = $tipo;
-        $this->realizado = $realizado;
+        $this->extension = $extension;
     }
 
     /**
@@ -51,17 +51,17 @@ class Pago implements JsonSerializable
     /**
      * @return null
      */
-    public function getFecha()
+    public function getDia()
     {
-        return $this->fecha;
+        return $this->dia;
     }
 
     /**
-     * @param null $fecha
+     * @param null $dia
      */
-    public function setFecha($fecha)
+    public function setDia($dia)
     {
-        $this->fecha = $fecha;
+        $this->dia = $dia;
     }
 
     /**
@@ -83,33 +83,52 @@ class Pago implements JsonSerializable
     /**
      * @return null
      */
-    public function getComprobante()
+    public function getCorrecto()
     {
-        return $this->comprobante;
+        return $this->correcto;
     }
 
     /**
-     * @param null $comprobante
+     * @param null $correcto
      */
-    public function setComprobante($comprobante)
+    public function setCorrecto($correcto)
     {
-        $this->comprobante = $comprobante;
+        $this->correcto = $correcto;
+    }
+
+
+
+
+    /**
+     * @return null
+     */
+    public function getMes()
+    {
+        return $this->mes;
+    }
+
+    /**
+     * @param null $mes
+     */
+    public function setMes($mes)
+    {
+        $this->mes = $mes;
     }
 
     /**
      * @return null
      */
-    public function getRutaComprobante()
+    public function getExtension()
     {
-        return $this->rutaComprobante;
+        return $this->extension;
     }
 
     /**
-     * @param null $rutaComprobante
+     * @param null $extension
      */
-    public function setRutaComprobante($rutaComprobante)
+    public function setExtension($extension)
     {
-        $this->rutaComprobante = $rutaComprobante;
+        $this->extension = $extension;
     }
 
     /**
@@ -128,21 +147,6 @@ class Pago implements JsonSerializable
         $this->tipo = $tipo;
     }
 
-    /**
-     * @return null
-     */
-    public function getRealizado()
-    {
-        return $this->realizado;
-    }
-
-    /**
-     * @param null $realizado
-     */
-    public function setRealizado($realizado)
-    {
-        $this->realizado = $realizado;
-    }
 
 
 

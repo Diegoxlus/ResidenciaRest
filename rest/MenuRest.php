@@ -23,7 +23,7 @@ class MenuRest extends BaseRest {
     }
 
     public function getMenus(){
-        //$currentLogged = parent::authenticateUser();
+        parent::verificarRol([0,1,2,3]);
         $menus = $this->menuMapper->getMenus();
         $menusJsonArray = array();
 
@@ -41,6 +41,7 @@ class MenuRest extends BaseRest {
     }
 
     public function getMenuDia($dia){
+        parent::verificarRol([0,1,2,3]);
         $menu = $this->menuMapper->getMenuDia($dia);
         header($_SERVER['SERVER_PROTOCOL'].' 200 Ok');
         header('Content-Type: application/json');
@@ -49,6 +50,7 @@ class MenuRest extends BaseRest {
     }
 
     public function addMenu(){
+        parent::verificarRol([2]);
         $data = json_decode($_POST['menu'],true);
         $menu = new Menu($data['_dia'],$data['_comida'],$data['_cena'],false);
 

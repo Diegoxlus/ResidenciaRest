@@ -116,9 +116,7 @@ class Habitacion
         if($this->tipo<0 || $this->tipo>1 || strlen($this->tipo)==0){
             $error = "Selecion un tipo de habitacion";
         }
-        if(strlen($this->disponible)==0){
-            $error = "Opcion disponible no valida";
-        }
+
         if($error!=""){
             throw new ValidationException($error, "Habitacion no valida");
         }

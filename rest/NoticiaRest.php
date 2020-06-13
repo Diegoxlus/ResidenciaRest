@@ -15,6 +15,7 @@ class NoticiaRest extends BaseRest {
     }
 
     function addNoticia(){
+        parent::verificarRol([0,1]);
         $hoy = date("Y-m-d");
         $data = json_decode($_POST['noticia'],true);
         $noticia = new Noticia('',$data['_titulo'],$hoy,$data['_descripcion']);
@@ -33,6 +34,7 @@ class NoticiaRest extends BaseRest {
     }
 
     function editarNoticia(){
+        parent::verificarRol([0,1]);
         $hoy = date("Y-m-d");
 
         $data = json_decode($_POST['noticia'],true);
@@ -53,7 +55,7 @@ class NoticiaRest extends BaseRest {
 
     function getNoticias(){
 
-        //parent::verificarRol([0,1]);
+        parent::verificarRol([0,1,3]);
         $noticiasArray = $this->noticiaMapper->getNoticias();
         header($_SERVER['SERVER_PROTOCOL'].' 200 Ok');
         header('Content-Type: application/json');
@@ -62,6 +64,7 @@ class NoticiaRest extends BaseRest {
     }
 
     function eliminarNoticia($id){
+        parent::verificarRol([0,1]);
         $resul  = $noticia = $this->noticiaMapper->eliminarNoticia($id);
         if($resul == 1){
             header($_SERVER['SERVER_PROTOCOL'].' 200 Ok');

@@ -15,7 +15,6 @@ class ConfiguracionRest extends BaseRest {
     }
 
     public function getConfiguracion(){
-        $currentUser = parent::verificarRol([parent::DIRECTORA,parent::SECRETARIA]);
         $result = $this->configuracionMapper->getConfiguracion();
         header($_SERVER['SERVER_PROTOCOL'].' 200 Ok');
         header('Content-Type: application/json');
@@ -24,9 +23,9 @@ class ConfiguracionRest extends BaseRest {
     }
 
     public function editarConfiguracion(){
-        $currentUser = parent::verificarRol([parent::DIRECTORA,parent::SECRETARIA]);
+        parent::verificarRol([parent::DIRECTORA,parent::SECRETARIA]);
         $data = json_decode($_POST['configuracion'],true);
-        $configuracion = new Configuracion(1,$data["_hora_comida"],$data["_hora_cena"],$data["_limite_hora_comida"],$data["_limite_hora_cena"]);
+        $configuracion = new Configuracion(1,$data["_hora_comida"],$data["_hora_cena"],$data["_limite_hora_comida"],$data["_limite_hora_cena"],$data['_registro']);
         $result = $this->configuracionMapper->editarConfiguracion($configuracion);
         if($result == true){
             header($_SERVER['SERVER_PROTOCOL'].' 200 Ok');
@@ -36,7 +35,7 @@ class ConfiguracionRest extends BaseRest {
         else{
             http_response_code(400);
             header('Content-Type: application/json');
-            echo(json_encode("Error al eliminar la habitacion"));
+            echo(json_encode("Error al editar la configuracion"));
         }
 
     }

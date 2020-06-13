@@ -33,6 +33,12 @@ class AsistenciaRest extends BaseRest {
         $horaLocal = new DateTime(); // Hora Local
 
         $configuracionData = $this->configuracionMapper->getConfiguracion();
+        if(!$configuracionData){
+            http_response_code(400);
+            header('Content-Type: application/json');
+            echo(json_encode("Contacta con la directora, no están configurados los horarios"));
+            exit();
+        }
         $configuracion = new Configuracion($configuracionData['id'],$configuracionData['hora_comida'],$configuracionData['hora_cena'],$configuracionData['limite_hora_comida'],$configuracionData['limite_hora_cena']);
         $horaComer = $configuracion->getHoraComida(); // Hora de la comida
         $horaPartida = explode(':',$horaComer); // Separamos las horas : min : sec
@@ -73,6 +79,12 @@ class AsistenciaRest extends BaseRest {
         $horaLocal = new DateTime(); // Hora Local
 
         $configuracionData = $this->configuracionMapper->getConfiguracion();
+        if(!$configuracionData){
+            http_response_code(400);
+            header('Content-Type: application/json');
+            echo(json_encode("Contacta con la directora, no están configurados los horarios"));
+            exit();
+        }
         $configuracion = new Configuracion($configuracionData['id'],$configuracionData['hora_comida'],$configuracionData['hora_cena'],$configuracionData['limite_hora_comida'],$configuracionData['limite_hora_cena']);
         $horaComer = $configuracion->getHoraCena(); // Hora de la comida
         $horaPartida = explode(':',$horaComer); // Separamos las horas : min : sec
@@ -113,6 +125,12 @@ class AsistenciaRest extends BaseRest {
         $horaLocal = new DateTime(); // Hora Local
 
         $configuracionData = $this->configuracionMapper->getConfiguracion();
+        if(!$configuracionData){
+            http_response_code(400);
+            header('Content-Type: application/json');
+            echo(json_encode("Contacta con la directora, no están configurados los horarios"));
+            exit();
+        }
         $configuracion = new Configuracion($configuracionData['id'],$configuracionData['hora_comida'],$configuracionData['hora_cena'],$configuracionData['limite_hora_comida'],$configuracionData['limite_hora_cena']);
         $horaComer = $configuracion->getHoraComida(); // Hora de la comida
         $horaPartida = explode(':',$horaComer); // Separamos las horas : min : sec
@@ -154,6 +172,12 @@ class AsistenciaRest extends BaseRest {
         $horaLocal = new DateTime(); // Hora Local
 
         $configuracionData = $this->configuracionMapper->getConfiguracion();
+        if(!$configuracionData){
+            http_response_code(400);
+            header('Content-Type: application/json');
+            echo(json_encode("Contacta con la directora, no están configurados los horarios"));
+            exit();
+        }
         $configuracion = new Configuracion($configuracionData['id'],$configuracionData['hora_comida'],$configuracionData['hora_cena'],$configuracionData['limite_hora_comida'],$configuracionData['limite_hora_cena']);
         $horaComer = $configuracion->getHoraComida(); // Hora de la comida
         $horaPartida = explode(':',$horaComer); // Separamos las horas : min : sec
@@ -188,12 +212,98 @@ class AsistenciaRest extends BaseRest {
 
     }
 
+    function asistenciaComida($dia){
+        $this->verificarRol([0,1,2]);
+        $resul = $this->asistenciaMapper->getResidentesInscritosComida($dia);
+        header($_SERVER['SERVER_PROTOCOL'].' 200 Ok');
+        header('Content-Type: application/json');
+        echo (json_encode($resul));
+    }
+
+    function asistenciaDia($dia){
+        $this->verificarRol([0,1,2]);
+        $resul = $this->asistenciaMapper->getResidentesInscritosDia($dia);
+        header($_SERVER['SERVER_PROTOCOL'].' 200 Ok');
+        header('Content-Type: application/json');
+        echo (json_encode($resul));
+    }
+
+    function asistenciaCena($dia){
+        $this->verificarRol([0,1,2]);
+        $resul = $this->asistenciaMapper->getResidentesInscritosCena($dia);
+        header($_SERVER['SERVER_PROTOCOL'].' 200 Ok');
+        header('Content-Type: application/json');
+        echo (json_encode($resul));
+
+    }
+
+    function asisteCena($residente,$dia){
+        $this->verificarRol([0,1,2]);
+        $resul = $this->asistenciaMapper->setAsisteCena($residente,$dia);
+        if($resul==1){
+            header($_SERVER['SERVER_PROTOCOL'].' 200 Ok');
+            header('Content-Type: application/json');
+        }else{
+            http_response_code(400);
+            header('Content-Type: application/json');
+            echo(json_encode("Error al cambiar la asistencia"));
+        }
+    }
+
+    function asisteComida($residente,$dia){
+        $this->verificarRol([0,1,2]);
+        $resul = $this->asistenciaMapper->setAsisteComida($residente,$dia);
+        if($resul==1){
+            header($_SERVER['SERVER_PROTOCOL'].' 200 Ok');
+            header('Content-Type: application/json');
+        }else{
+            http_response_code(400);
+            header('Content-Type: application/json');
+            echo(json_encode("Error al cambiar la asistencia"));
+        }
+    }
+
+    function noAsisteCena($residente,$dia){
+        $this->verificarRol([0,1,2]);
+        $resul = $this->asistenciaMapper->setNoAsisteCena($residente,$dia);
+        if($resul==1){
+            header($_SERVER['SERVER_PROTOCOL'].' 200 Ok');
+            header('Content-Type: application/json');
+        }else{
+            http_response_code(400);
+            header('Content-Type: application/json');
+            echo(json_encode("Error al cambiar la asistencia"));
+        }
+    }
+
+    function noAsisteComida($residente,$dia){
+        $this->verificarRol([0,1,2]);
+        $resul = $this->asistenciaMapper->setNoAsisteComida($residente,$dia);
+        if($resul==1){
+            header($_SERVER['SERVER_PROTOCOL'].' 200 Ok');
+            header('Content-Type: application/json');
+        }else{
+            http_response_code(400);
+            header('Content-Type: application/json');
+            echo(json_encode("Error al cambiar la asistencia"));
+        }
+    }
+
+
+
 }
 
 $asistenciaRest = new AsistenciaRest();
 URIDispatcher::getInstance()
     ->map("GET","/asistencia", array($asistenciaRest,"getAsistencia"))
-    ->map("GET","/asistencia/comer/$1", array($asistenciaRest,"inscribirseComer"))
-    ->map("GET","/asistencia/cenar/$1", array($asistenciaRest,"inscribirseCenar"))
-    ->map("GET","/asistencia/desinscribirse-comer/$1", array($asistenciaRest,"desinscribirseComer"))
-    ->map("GET","/asistencia/desinscribirse-cenar/$1", array($asistenciaRest,"desinscribirseCenar"));
+    ->map("PUT","/asistencia/comer/$1", array($asistenciaRest,"inscribirseComer"))
+    ->map("PUT","/asistencia/cenar/$1", array($asistenciaRest,"inscribirseCenar"))
+    ->map("POST","/asistencia/si-come/$1/$2", array($asistenciaRest,"asisteComida"))
+    ->map("POST","/asistencia/si-cena/$1/$2", array($asistenciaRest,"asisteCena"))
+    ->map("POST","/asistencia/no-come/$1/$2", array($asistenciaRest,"noAsisteComida"))
+    ->map("POST","/asistencia/no-cena/$1/$2", array($asistenciaRest,"noAsisteCena"))
+    ->map("GET","/asistencia/cena/$1", array($asistenciaRest,"asistenciaCena"))
+    ->map("GET","/asistencia/dia/$1", array($asistenciaRest,"asistenciaDia"))
+    ->map("GET","/asistencia/comida/$1", array($asistenciaRest,"asistenciaComida"))
+    ->map("PUT","/asistencia/desinscribirse-comer/$1", array($asistenciaRest,"desinscribirseComer"))
+    ->map("PUT","/asistencia/desinscribirse-cenar/$1", array($asistenciaRest,"desinscribirseCenar"));
